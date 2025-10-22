@@ -33,12 +33,8 @@ export default function Hero() {
 
           <div className={styles.heroButtons}>
             <button className={styles.btnPrimary}>
-              Start Reporting
+              Explore Data
               <span className={styles.arrow}>→</span>
-            </button>
-            <button className={styles.btnSecondary}>
-              Watch Demo
-              <span className={styles.playIcon}>▶</span>
             </button>
           </div>
 

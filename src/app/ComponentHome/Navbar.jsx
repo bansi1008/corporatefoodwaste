@@ -45,11 +45,6 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div className={styles.navActions}>
-          <button className={styles.btnLogin}>Login</button>
-          <button className={styles.btnGetStarted}>Get Started</button>
-        </div>
-
         <button className={styles.hamburger} onClick={toggleMenu}>
           {isMenuOpen ? <IoClose size={28} /> : <HiMenuAlt3 size={28} />}
         </button>

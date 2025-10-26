@@ -24,12 +24,12 @@ export default function Navbar() {
 
         <ul className={`${styles.navLinks} ${isMenuOpen ? styles.active : ""}`}>
           <li>
-            <a href="#home" className={styles.navLink}>
+            <a href="/" className={styles.navLink}>
               Home
             </a>
           </li>
           <li>
-            <a href="#data" className={styles.navLink}>
+            <a href="/Data" className={styles.navLink}>
               Data
             </a>
           </li>

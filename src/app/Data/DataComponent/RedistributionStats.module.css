@@ -1,0 +1,337 @@
+.redistribution {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #22c55e15, #16a34a15);
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tableWrapper {
+  background: #f9fafb;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  overflow-x: auto;
+  margin-bottom: 3rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #1f2937, #374151);
+  color: white;
+}
+
+.table th {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table th:last-child {
+  border-right: none;
+}
+
+.yearHeader {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  text-align: left !important;
+  padding-left: 1.5rem !important;
+}
+
+.dataRow {
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.dataRow:hover {
+  background: #f0fdf4;
+  transform: scale(1.01);
+}
+
+.dataRow:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-size: 0.938rem;
+  color: #374151;
+}
+
+.yearCell {
+  font-weight: 700;
+  color: #1f2937;
+  text-align: left;
+  padding-left: 1.5rem !important;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.yearIcon {
+  color: #22c55e;
+  font-size: 1.125rem;
+}
+
+.cellContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.percentage {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.badge2 {
+  font-size: 1.125rem;
+}
+
+.noData {
+  color: #d1d5db;
+  font-size: 1.25rem;
+}
+
+.naData {
+  color: #9ca3af;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Performance Classes */
+.excellent {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  color: #065f46;
+  font-weight: 700;
+}
+
+.good {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #78350f;
+  font-weight: 700;
+}
+
+.moderate {
+  background: linear-gradient(135deg, #fed7aa, #fdba74);
+  color: #7c2d12;
+  font-weight: 700;
+}
+
+.low {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #7f1d1d;
+  font-weight: 700;
+}
+
+/* Legend */
+.legend {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 3rem;
+}
+
+.legendTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.legendItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendBadge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.938rem;
+  width: 100%;
+  text-align: center;
+}
+
+.excellentBadge {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  color: #065f46;
+  border: 2px solid #22c55e;
+}
+
+.goodBadge {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #78350f;
+  border: 2px solid #eab308;
+}
+
+.moderateBadge {
+  background: linear-gradient(135deg, #fed7aa, #fdba74);
+  color: #7c2d12;
+  border: 2px solid #f97316;
+}
+
+.developingBadge {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #7f1d1d;
+  border: 2px solid #ef4444;
+}
+
+.legendText {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Highlights */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlightCard {
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+}
+
+.highlightIcon {
+  font-size: 2.5rem;
+  color: #22c55e;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highlightTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.highlightText {
+  font-size: 0.938rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .table {
+    min-width: 1200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .redistribution {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .legendItems {
+    grid-template-columns: 1fr;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .legend {
+    padding: 1.5rem;
+  }
+
+  .highlightCard {
+    padding: 1.5rem;
+  }
+}

@@ -82,3 +82,4 @@ export default function Impact() {
     </section>
   );
 }
+

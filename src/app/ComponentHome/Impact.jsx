@@ -68,18 +68,7 @@ export default function Impact() {
             </div>
           ))}
         </div>
-
-        <div className={styles.cta}>
-          <p className={styles.ctaText}>
-            Report you company to make a positive impact
-          </p>
-          <button className={styles.ctaButton}>
-            Add your company
-            <span className={styles.arrow}>→</span>
-          </button>
-        </div>
       </div>
     </section>
   );
 }
-

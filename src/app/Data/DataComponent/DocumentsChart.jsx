@@ -93,7 +93,7 @@ export default function DocumentsChart() {
                 <YAxis stroke="#6b7280" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "#0f0e0eff",
                     border: "1px solid #e5e7eb",
                     borderRadius: "8px",
                   }}
@@ -127,7 +127,7 @@ export default function DocumentsChart() {
                 <YAxis stroke="#6b7280" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "#121212ff",
                     border: "1px solid #e5e7eb",
                     borderRadius: "8px",
                   }}

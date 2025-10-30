@@ -116,7 +116,7 @@ export default function DocumentsChart() {
             </ResponsiveContainer>
           </div>
 
-          <div className={styles.chartCard}>
+          {/* <div className={styles.chartCard}>
             <h3 className={styles.chartTitle}>
               Total Documents Trend (Line Chart)
             </h3>
@@ -144,7 +144,7 @@ export default function DocumentsChart() {
                 />
               </LineChart>
             </ResponsiveContainer>
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.stats}>

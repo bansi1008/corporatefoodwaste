@@ -42,12 +42,8 @@ export default function Features() {
           <span className={styles.badge}>Features</span>
           <h2 className={styles.title}>
             Everything You Need to{" "}
-            <span className={styles.highlight}>Reduce Waste</span>
+            <span className={styles.highlight}>Reduce Food Waste</span>
           </h2>
-          <p className={styles.subtitle}>
-            Powerful tools designed to help your organization track, analyze,
-            and minimize food waste effectively.
-          </p>
         </div>
 
         <div className={styles.featuresGrid}>
@@ -70,4 +66,3 @@ export default function Features() {
     </section>
   );
 }
-

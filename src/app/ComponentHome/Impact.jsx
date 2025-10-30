@@ -28,13 +28,6 @@ export default function Impact() {
       description: "Food redirected to communities in need",
       color: "#f59e0b",
     },
-    {
-      icon: <IoStatsChart />,
-      value: "£12M",
-      label: "Cost Savings",
-      description: "Financial benefits for participating organizations",
-      color: "#8b5cf6",
-    },
   ];
 
   return (

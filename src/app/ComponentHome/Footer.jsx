@@ -100,7 +100,18 @@ export default function Footer() {
         <div className={styles.footerBottom}>
           <p className={styles.copyright}>
             © {currentYear} Waste food reporting. All rights reserved.
+            <br />
+            Design and Developed By{" "}
+            <a
+              href="https://mysiteee.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.developerLink}
+            >
+              Bansi Dobariya
+            </a>
           </p>
+
           <div className={styles.footerLinks}>
             <a href="#">Privacy</a>
             <span className={styles.separator}>•</span>

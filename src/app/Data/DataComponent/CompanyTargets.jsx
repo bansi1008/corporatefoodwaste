@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import styles from "./CompanyTargets.module.css";
 import { FaLeaf, FaCalendarAlt } from "react-icons/fa";
 import { IoTargetSharp } from "react-icons/io5";
@@ -9,16 +10,15 @@ export default function CompanyTargets() {
     {
       company: "ALDI",
       target: "Reduce food waste by 20% by 2025, and halve it by 2030",
-      date1: "2025",
-      date2: "2030",
+      date: [2025],
+      //date2: "2030",
       metric: "Unknown",
       baseline: "2016/17",
     },
     {
       company: "ASDA",
       target: "Reduce Food Waste by 20% and halve it by 2030",
-      date1: "",
-      date2: "2030",
+      date: [2030],
       metric: "Food Waste to Energy",
       baseline: "2014/15",
     },
@@ -26,16 +26,15 @@ export default function CompanyTargets() {
       company: "CO-OP",
       target:
         "Reduce food waste generated in our stores and depots by 50% by 2030 compared to 2015",
-      date1: "",
-      date2: "2030",
+      date: [2030],
+
       metric: "Food Waste",
       baseline: "2014/15",
     },
     {
       company: "ICELAND",
       target: "50% reduction of food waste in our own operations by 2030",
-      date1: "",
-      date2: "2030",
+      date: [2030],
       metric: "Food Waste/Food Handled",
       baseline: "2017/18",
     },
@@ -43,8 +42,8 @@ export default function CompanyTargets() {
       company: "LIDL",
       target:
         "Reduce food waste by 40% since 2016 (relative to business growth) by 2025 and 50% by 2030",
-      date1: "2025",
-      date2: "2030",
+      date: [2025, 2030],
+
       metric:
         "Tonnes operational food waste per average store m² in updated year",
       baseline: "2015/16",
@@ -53,24 +52,21 @@ export default function CompanyTargets() {
       company: "M&S",
       target:
         "Halve UK retail food waste by 2030, maximising donations of surplus",
-      date1: "",
-      date2: "2030",
+      date: [2030],
       metric: "Food Waste",
       baseline: "2017/18",
     },
     {
       company: "Morrisons",
       target: "50% reduction in operational food waste in stores by 2030",
-      date1: "",
-      date2: "2030",
+      date: [2030],
       metric: "Food waste/Food Handled",
       baseline: "2016/17",
     },
     {
       company: "Sainsbury",
       target: "Reduce food waste by 50 per cent by 2030",
-      date1: "",
-      date2: "2030",
+      date: [2030],
       metric: "Food waste to anaerobic digestion",
       baseline: "2019/20",
     },
@@ -78,16 +74,14 @@ export default function CompanyTargets() {
       company: "Tesco",
       target:
         "85% of unsold food safe for human consumption redistributed by 2025. Reduce food waste by 50% by 2025",
-      date1: "2025",
-      date2: "",
+      date: [2025],
       metric: "Food Waste/Food Handled",
       baseline: "2016/17",
     },
     {
       company: "Waitrose",
       target: "Reduce operational food waste by 50% against a 2018 baseline",
-      date1: "",
-      date2: "Unknown",
+      date: [],
       metric: "Food Waste/Food Handled",
       baseline: "2017/18",
     },
@@ -95,8 +89,7 @@ export default function CompanyTargets() {
       company: "OCADO",
       target:
         "Reduce food waste in own operations by 20% by 2025 and halve it by 2030",
-      date1: "2025",
-      date2: "2030",
+      date: [2025, 2030],
       metric: "Food waste (not sold) as % sales",
       baseline: "2021/22",
     },
@@ -141,29 +134,52 @@ export default function CompanyTargets() {
                   </td>
                   <td className={styles.targetCell}>{item.target}</td>
                   <td className={styles.dateCell}>
-                    <div className={styles.dates}>
-                      {item.date1 && item.date2 && item.date2 !== "Unknown" && (
-                        <span
-                          className={`${styles.date} ${styles.previousDate}`}
-                        >
-                          <FaCalendarAlt /> {item.date1}
-                          <span className={styles.dateLabel}>Previous</span>
-                        </span>
-                      )}
-                      {item.date1 &&
-                        (!item.date2 || item.date2 === "Unknown") && (
-                          <span
-                            className={`${styles.date} ${styles.latestDate}`}
-                          >
-                            <FaCalendarAlt /> {item.date1}
-                            <span className={styles.dateLabel}>Target</span>
-                          </span>
-                        )}
-                      {item.date2 && item.date2 !== "Unknown" && (
-                        <span className={`${styles.date} ${styles.latestDate}`}>
-                          <FaCalendarAlt /> {item.date2}
-                          <span className={styles.dateLabel}>Latest</span>
-                        </span>
+                    <div className={styles.milestonesWrapper}>
+                      {item.date && item.date.length > 0 ? (
+                        <>
+                          <div className={styles.milestoneContainer}>
+                            {item.date.map((year, idx) => (
+                              <React.Fragment key={idx}>
+                                <span
+                                  className={`${styles.milestone} ${
+                                    item.date.length === 1
+                                      ? styles.milestoneSingle
+                                      : idx === 0
+                                      ? styles.milestone1
+                                      : idx === item.date.length - 1
+                                      ? styles.milestone2
+                                      : styles.milestoneIntermediate
+                                  }`}
+                                >
+                                  {item.date.length === 1 ? (
+                                    <FaCalendarAlt
+                                      className={styles.calendarIcon}
+                                    />
+                                  ) : (
+                                    <span className={styles.milestoneIcon}>
+                                      {idx + 1}
+                                    </span>
+                                  )}
+                                  <span className={styles.milestoneYear}>
+                                    {year}
+                                  </span>
+                                </span>
+                                {idx < item.date.length - 1 && (
+                                  <div className={styles.connector}></div>
+                                )}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                          <div className={styles.milestoneLabel}>
+                            {item.date.length === 1
+                              ? "Single Target"
+                              : `${item.date.length} Milestones`}
+                          </div>
+                        </>
+                      ) : (
+                        <div className={styles.noDate}>
+                          <span className={styles.noDateText}>No Date Set</span>
+                        </div>
                       )}
                     </div>
                   </td>

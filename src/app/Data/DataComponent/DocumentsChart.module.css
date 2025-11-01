@@ -48,11 +48,9 @@
   margin: 0 auto;
 }
 
-.chartsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+.chartWrapper {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
 }
 
 .chartCard {

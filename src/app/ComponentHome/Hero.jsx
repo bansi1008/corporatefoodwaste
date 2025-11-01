@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import styles from "./Hero.module.css";
-import heroImg from "../Images/heroimg.png";
+//import heroImg from "../Images/img2.png";
+import heroImg from "../Images/img4.png";
 import { IoLeafSharp } from "react-icons/io5";
 import { BiSolidLeaf } from "react-icons/bi";
 import { FaSeedling } from "react-icons/fa";
@@ -10,6 +11,29 @@ import { FaSeedling } from "react-icons/fa";
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">
+      <div className={styles.backgroundImage}>
+        <Image
+          src={heroImg}
+          alt="Food Waste Management"
+          fill
+          priority
+          className={styles.bgImage}
+          quality={100}
+        />
+        <div className={styles.overlay}></div>
+      </div>
+
+      <div className={styles.floatingCards}>
+        <div className={styles.floatingCard1}>
+          <span className={styles.cardEmoji}>♻️</span>
+          <span className={styles.cardText}>Eco-Friendly</span>
+        </div>
+        <div className={styles.floatingCard2}>
+          <span className={styles.cardEmoji}>📊</span>
+          <span className={styles.cardText}>Real-time Data</span>
+        </div>
+      </div>
+
       <div className={styles.container}>
         <div className={styles.heroContent}>
           <div className={styles.floatingEmoji}>
@@ -52,27 +76,6 @@ export default function Hero() {
             <div className={styles.statItem}>
               <h3 className={styles.statNumber}>1M+</h3>
               <p className={styles.statLabel}>Tons Saved</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.heroImage}>
-          <div className={styles.imageWrapper}>
-            <Image
-              src={heroImg}
-              alt="Food Waste Management"
-              width={600}
-              height={600}
-              priority
-              className={styles.mainImage}
-            />
-            <div className={styles.floatingCard1}>
-              <span className={styles.cardEmoji}>♻️</span>
-              <span className={styles.cardText}>Eco-Friendly</span>
-            </div>
-            <div className={styles.floatingCard2}>
-              <span className={styles.cardEmoji}>📊</span>
-              <span className={styles.cardText}>Real-time Data</span>
             </div>
           </div>
         </div>

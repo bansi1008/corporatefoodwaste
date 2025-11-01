@@ -10,8 +10,6 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
 } from "recharts";
 
 export default function DocumentsChart() {
@@ -81,70 +79,60 @@ export default function DocumentsChart() {
           </p>
         </div>
 
-        <div className={styles.chartsGrid}>
+        <div className={styles.chartWrapper}>
           <div className={styles.chartCard}>
-            <h3 className={styles.chartTitle}>
-              Documents by Type (Stacked Bar Chart)
-            </h3>
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={documentsData}>
+            <h3 className={styles.chartTitle}>Documents by Type Over Time</h3>
+            <ResponsiveContainer width="100%" height={450}>
+              <BarChart
+                data={documentsData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                barSize={45}
+              >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="year" stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
+                <XAxis
+                  dataKey="year"
+                  stroke="#6b7280"
+                  style={{ fontSize: "0.875rem", fontWeight: 600 }}
+                />
+                <YAxis stroke="#6b7280" style={{ fontSize: "0.875rem" }} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#0f0e0eff",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "8px",
+                    backgroundColor: "#1f2937",
+                    border: "none",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+                    color: "#ffffff",
                   }}
+                  cursor={{ fill: "rgba(34, 197, 94, 0.1)" }}
                 />
-                <Legend />
+                <Legend
+                  wrapperStyle={{ paddingTop: "20px" }}
+                  iconType="circle"
+                />
                 <Bar
                   dataKey="annualReport"
                   stackId="a"
                   fill="#22c55e"
                   name="Annual Report"
+                  radius={[0, 0, 0, 0]}
                 />
                 <Bar
                   dataKey="sustainability"
                   stackId="a"
                   fill="#3b82f6"
                   name="Sustainability Reports"
+                  radius={[0, 0, 0, 0]}
                 />
-                <Bar dataKey="other" stackId="a" fill="#f59e0b" name="Other" />
+                <Bar
+                  dataKey="other"
+                  stackId="a"
+                  fill="#f59e0b"
+                  name="Other"
+                  radius={[8, 8, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
-
-          {/* <div className={styles.chartCard}>
-            <h3 className={styles.chartTitle}>
-              Total Documents Trend (Line Chart)
-            </h3>
-            <ResponsiveContainer width="100%" height={350}>
-              <LineChart data={documentsData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="year" stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#121212ff",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "8px",
-                  }}
-                />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="total"
-                  stroke="#22c55e"
-                  strokeWidth={3}
-                  name="Total Documents"
-                  dot={{ r: 5, fill: "#22c55e" }}
-                  activeDot={{ r: 7 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div> */}
         </div>
 
         <div className={styles.stats}>

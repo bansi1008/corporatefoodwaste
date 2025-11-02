@@ -1,0 +1,346 @@
+/* EU Company Data Table */
+.targets {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #3b82f615, #2563eb15);
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badgeIcon {
+  font-size: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tableWrapper {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.table th {
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: #eff6ff;
+  transform: scale(1.01);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: 1.25rem 1rem;
+  font-size: 0.938rem;
+  color: #374151;
+  vertical-align: top;
+}
+
+.companyCell {
+  font-weight: 600;
+}
+
+.companyName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1f2937;
+}
+
+.companyIcon {
+  color: #3b82f6;
+  font-size: 1.125rem;
+}
+
+.commitmentsCell {
+  max-width: 500px;
+}
+
+.commitmentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.commitmentItem {
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border-radius: 8px;
+  border-left: 3px solid #3b82f6;
+  line-height: 1.6;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.commitmentItem:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+.commitmentItem::before {
+  content: "→";
+  margin-right: 0.5rem;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.dateCell {
+  min-width: 150px;
+}
+
+.milestonesWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.milestoneContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.milestone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.813rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.milestone1 {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1e40af;
+  border: 2px solid #3b82f6;
+}
+
+.milestone2 {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #065f46;
+  border: 2px solid #22c55e;
+}
+
+.milestoneIntermediate {
+  background: linear-gradient(135deg, #e9d5ff, #d8b4fe);
+  color: #6b21a8;
+  border: 2px solid #a855f7;
+}
+
+.milestoneSingle {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #78350f;
+  border: 2px solid #f59e0b;
+}
+
+.milestoneIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.calendarIcon {
+  font-size: 0.875rem;
+}
+
+.milestoneYear {
+  font-size: 0.875rem;
+  letter-spacing: 0.3px;
+}
+
+.connector {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(to right, #3b82f6, #22c55e);
+  position: relative;
+}
+
+.connector::after {
+  content: "→";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #22c55e;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.milestoneLabel {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.milestone:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.milestone1:hover {
+  border-color: #2563eb;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.milestone2:hover {
+  border-color: #16a34a;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.milestoneIntermediate:hover {
+  border-color: #9333ea;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+}
+
+.milestoneSingle:hover {
+  border-color: #d97706;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+}
+
+.noDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+}
+
+.noDateText {
+  font-size: 0.813rem;
+  color: #9ca3af;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.metricCell {
+  color: #6b7280;
+  font-size: 0.875rem;
+  max-width: 250px;
+}
+
+.baselineCell {
+  text-align: center;
+}
+
+.baseline {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #eff6ff;
+  color: #1e40af;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 2px solid #3b82f620;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .targets {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .tableWrapper {
+    overflow-x: scroll;
+  }
+
+  .table {
+    min-width: 1100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}

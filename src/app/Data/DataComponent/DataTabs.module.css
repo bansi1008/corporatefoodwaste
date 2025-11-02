@@ -1,0 +1,293 @@
+.tabsWrapper {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  padding: 2rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tabsWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(34, 197, 94, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.globeIcon {
+  font-size: 1.75rem;
+  color: #22c55e;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tabsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  background: white;
+  border: 3px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tab:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.15);
+  border-color: #22c55e;
+}
+
+.tab:hover::before {
+  opacity: 0.5;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-color: #22c55e;
+  border-width: 3px;
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.25);
+  transform: translateY(-4px);
+}
+
+.tab.active::before {
+  opacity: 1;
+}
+
+.tabIcon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.tab:hover .tabIcon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.tab.active .tabIcon {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.tabContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tabLabel {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+.tab.active .tabLabel {
+  color: #166534;
+}
+
+.tabSubtext {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.tab.active .tabSubtext {
+  color: #16a34a;
+}
+
+.activeIndicator {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  z-index: 1;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: translateY(-50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.tabInfo {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid #d1fae5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.infoText {
+  font-size: 0.938rem;
+  color: #16a34a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.infoText::before {
+  content: "ℹ️";
+  font-size: 1.125rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabsWrapper {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .tabsContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tab {
+    padding: 1.25rem;
+  }
+
+  .tabIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .tabLabel {
+    font-size: 1rem;
+  }
+
+  .tabSubtext {
+    font-size: 0.813rem;
+  }
+
+  .globeIcon {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+
+  .infoText {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tab {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .tabIcon {
+    margin: 0 auto;
+  }
+
+  .activeIndicator {
+    top: 1rem;
+    right: 1rem;
+    transform: none;
+  }
+}

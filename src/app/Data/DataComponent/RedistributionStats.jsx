@@ -71,19 +71,6 @@ export default function RedistributionStats() {
       Iceland: "",
       Coop: "",
     },
-    {
-      year: "2021/22",
-      Tesco: "83%",
-      Sainsbury: "119%",
-      Asda: "",
-      Morrisons: "",
-      Aldi: "",
-      MS: "",
-      Lidl: "",
-      Waitrose: "",
-      Iceland: "",
-      Coop: "",
-    },
   ];
 
   const getPerformanceClass = (value) => {

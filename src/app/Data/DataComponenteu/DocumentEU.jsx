@@ -1,0 +1,177 @@
+"use client";
+
+import styles from "./DocumentEU.module.css";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+export default function DocumentEU() {
+  const documentsData = [
+    {
+      year: "2016/17",
+      annualReport: 5,
+      sustainability: 1,
+      integratedReport: 1,
+      other: 2,
+      total: 9,
+    },
+    {
+      year: "2017/18",
+      annualReport: 3,
+      sustainability: 5,
+      integratedReport: 2,
+      other: 3,
+      total: 13,
+    },
+    {
+      year: "2018/19",
+      annualReport: 4,
+      sustainability: 3,
+      integratedReport: 2,
+      other: 4,
+      total: 13,
+    },
+    {
+      year: "2019/20",
+      annualReport: 4,
+      sustainability: 6,
+      integratedReport: 2,
+      other: 6,
+      total: 18,
+    },
+    {
+      year: "2020/21",
+      annualReport: 4,
+      sustainability: 7,
+      integratedReport: 2,
+      other: 1,
+      total: 14,
+    },
+    {
+      year: "2021/22",
+      annualReport: 4,
+      sustainability: 5,
+      integratedReport: 2,
+      other: 5,
+      total: 16,
+    },
+    {
+      year: "2022/23",
+      annualReport: 4,
+      sustainability: 4,
+      integratedReport: 2,
+      other: 3,
+      total: 13,
+    },
+  ];
+
+  return (
+    <section className={styles.charts}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <span className={styles.badge}>Documentation Trends</span>
+          <h2 className={styles.title}>
+            EU <span className={styles.highlight}>Documents by Year</span>
+          </h2>
+          <p className={styles.subtitle}>
+            Evolution of sustainability reporting documentation across European
+            retailers
+          </p>
+        </div>
+
+        <div className={styles.chartWrapper}>
+          <div className={styles.chartCard}>
+            <h3 className={styles.chartTitle}>Documents by Type Over Time</h3>
+            <ResponsiveContainer width="100%" height={450}>
+              <BarChart
+                data={documentsData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                barSize={45}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis
+                  dataKey="year"
+                  stroke="#6b7280"
+                  style={{ fontSize: "0.875rem", fontWeight: 600 }}
+                />
+                <YAxis stroke="#6b7280" style={{ fontSize: "0.875rem" }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1e293b",
+                    border: "none",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+                    color: "#ffffff",
+                  }}
+                  cursor={{ fill: "rgba(59, 130, 246, 0.1)" }}
+                />
+                <Legend
+                  wrapperStyle={{ paddingTop: "20px" }}
+                  iconType="circle"
+                />
+                <Bar
+                  dataKey="annualReport"
+                  stackId="a"
+                  fill="#3b82f6"
+                  name="Annual Report"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="sustainability"
+                  stackId="a"
+                  fill="#22c55e"
+                  name="Sustainability Reports"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="integratedReport"
+                  stackId="a"
+                  fill="#8b5cf6"
+                  name="Integrated Report"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="other"
+                  stackId="a"
+                  fill="#f59e0b"
+                  name="Other"
+                  radius={[8, 8, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className={styles.stats}>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>96</div>
+            <div className={styles.statLabel}>Total Documents</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>28</div>
+            <div className={styles.statLabel}>Annual Reports</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>31</div>
+            <div className={styles.statLabel}>Sustainability Reports</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>13</div>
+            <div className={styles.statLabel}>Integrated Reports</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>24</div>
+            <div className={styles.statLabel}>Other Documents</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

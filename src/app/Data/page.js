@@ -12,6 +12,7 @@ import RedistributionStats from "./DataComponent/RedistributionStats";
 import RedistributionRadar from "./DataComponent/RedistributionRadar";
 import FoodDonations from "./DataComponent/FoodDonations";
 import Alliances from "./DataComponent/Alliances";
+import UKStates from "./DataComponent/UKstates";
 import EuCompanyData from "./DataComponenteu/Eucompanydata";
 import EuDataHero from "./DataComponenteu/EuDataHero";
 import DocumentEU from "./DataComponenteu/DocumentEU";
@@ -39,9 +40,9 @@ export default function Page() {
           <DataHero />
           <CompanyTargets />
           <DocumentsChart />
-          <RedistributionStats />
 
-          <FoodDonations />
+          <UKStates />
+
           <Alliances />
         </>
       )}

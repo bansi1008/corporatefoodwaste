@@ -38,7 +38,7 @@ export default function EuCompanyData() {
     {
       companyName: "Carrefour",
       Commitment: ["50% reduction in retail FW by 2025 "],
-      targetDate: [],
+      targetDate: [2025],
       TargetMetric: ["FW in kg per sq.m "],
       Standardised: "Food Waste in kg per sq.m",
       Baseline: "2016/2017",
@@ -63,7 +63,7 @@ export default function EuCompanyData() {
         " Reduce FW by 32% by 2025",
         "Reduce FW by 50% by 2030",
       ],
-      targetDate: [],
+      targetDate: [2020, 2025, 2030],
       TargetMetric: ["Tonnes of FW per 1 million Euro of food sales"],
       Standardised: "Tonnes of FW per 1 million Euro of food sales",
       Baseline: "2016/17",

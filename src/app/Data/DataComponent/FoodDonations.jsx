@@ -149,7 +149,7 @@ export default function FoodDonations() {
                 <Bar dataKey="Asda" fill="#f59e0b" />
                 <Bar dataKey="Morrisons" fill="#8b5cf6" />
                 <Bar dataKey="Aldi" fill="#ec4899" />
-                <Bar dataKey="MS" fill="#10b981" />
+                <Bar dataKey="MS" fill="#be22c4ff" />
                 <Bar dataKey="Lidl" fill="#f97316" />
                 <Bar dataKey="Iceland" fill="#06b6d4" />
               </BarChart>

@@ -182,7 +182,7 @@ export default function Charity() {
             EU <span className={styles.highlight}>Charity Partners</span>
           </h2>
           <p className={styles.subtitle}>
-            Non-profit organizations and charities working with European
+            Key Non-profit organizations and charities working with European
             retailers to combat food waste
           </p>
         </div>
@@ -223,22 +223,22 @@ export default function Charity() {
           {filteredCharities.length > 0 ? (
             <div className={styles.charitiesList}>
               {filteredCharities.map((charity, index) => (
-              <div key={index} className={styles.charityCard}>
-                <h4 className={styles.charityName}>{charity.name}</h4>
-                <div className={styles.companiesList}>
-                  {charity.companies.map((company, idx) => (
-                    <span key={idx} className={styles.companyTag}>
-                      <IoCheckmarkCircle className={styles.checkIcon} />
-                      {company}
-                    </span>
-                  ))}
+                <div key={index} className={styles.charityCard}>
+                  <h4 className={styles.charityName}>{charity.name}</h4>
+                  <div className={styles.companiesList}>
+                    {charity.companies.map((company, idx) => (
+                      <span key={idx} className={styles.companyTag}>
+                        <IoCheckmarkCircle className={styles.checkIcon} />
+                        {company}
+                      </span>
+                    ))}
+                  </div>
+                  <div className={styles.companyCount}>
+                    {charity.companies.length}{" "}
+                    {charity.companies.length === 1 ? "Partner" : "Partners"}
+                  </div>
                 </div>
-                <div className={styles.companyCount}>
-                  {charity.companies.length}{" "}
-                  {charity.companies.length === 1 ? "Partner" : "Partners"}
-                </div>
-              </div>
-            ))}
+              ))}
             </div>
           ) : (
             <div className={styles.emptyState}>

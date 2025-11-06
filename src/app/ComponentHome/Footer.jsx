@@ -7,6 +7,8 @@ import { FaTwitter, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
 import { IoMdMail, IoMdCall } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 
+import Link from "next/link";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -61,19 +63,7 @@ export default function Footer() {
             <h3 className={styles.columnTitle}>Resources</h3>
             <ul className={styles.linkList}>
               <li>
-                <a href="#">Documentation</a>
-              </li>
-              <li>
-                <a href="#">API Reference</a>
-              </li>
-              <li>
-                <a href="#">Support Center</a>
-              </li>
-              <li>
-                <a href="#">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#">Terms of Service</a>
+                <Link href="/Login">Admin</Link>
               </li>
             </ul>
           </div>

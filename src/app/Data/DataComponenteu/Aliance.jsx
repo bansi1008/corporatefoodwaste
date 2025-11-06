@@ -7,6 +7,8 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 
 export default function Aliance() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [viewMode, setViewMode] = useState("alliances"); // "alliances" or "companies"
+
   const euAlliances = [
     {
       name: "AECOC (Spanish Association of Manufacturers and Distributors)",
@@ -241,12 +243,40 @@ export default function Aliance() {
     },
   ];
 
+  // Get unique companies and their alliances
+  const getCompaniesList = () => {
+    const companiesMap = {};
+    euAlliances.forEach((alliance) => {
+      alliance.companies.forEach((company) => {
+        if (!companiesMap[company]) {
+          companiesMap[company] = [];
+        }
+        companiesMap[company].push(alliance.name);
+      });
+    });
+    return Object.entries(companiesMap).map(([company, alliances]) => ({
+      name: company,
+      alliances: alliances,
+    }));
+  };
+
+  const companiesList = getCompaniesList();
+
   // Filter alliances based on search term
   const filteredAlliances = euAlliances.filter(
     (alliance) =>
       alliance.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       alliance.companies.some((company) =>
         company.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+  );
+
+  // Filter companies based on search term
+  const filteredCompanies = companiesList.filter(
+    (company) =>
+      company.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      company.alliances.some((alliance) =>
+        alliance.toLowerCase().includes(searchTerm.toLowerCase())
       )
   );
 
@@ -259,17 +289,49 @@ export default function Aliance() {
             EU <span className={styles.highlight}>Alliances & Networks</span>
           </h2>
           <p className={styles.subtitle}>
-            Pan-European collaborative networks and partnerships driving
-            sustainability across the continent
+            Key non-profit organisations and charities working with our sample
+            of EU retailers to combat food waste
           </p>
+        </div>
+
+        {/* View Toggle Tabs */}
+        <div className={styles.viewTabs}>
+          <button
+            className={`${styles.tab} ${
+              viewMode === "alliances" ? styles.activeTab : ""
+            }`}
+            onClick={() => {
+              setViewMode("alliances");
+              setSearchTerm("");
+            }}
+          >
+            <FaHandshake className={styles.tabIcon} />
+            By Alliance
+          </button>
+          <button
+            className={`${styles.tab} ${
+              viewMode === "companies" ? styles.activeTab : ""
+            }`}
+            onClick={() => {
+              setViewMode("companies");
+              setSearchTerm("");
+            }}
+          >
+            <FaHandshake className={styles.tabIcon} />
+            By Company
+          </button>
         </div>
 
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <FaHandshake className={styles.sectionIcon} />
-            <h3 className={styles.sectionTitle}>European Alliances</h3>
+            <h3 className={styles.sectionTitle}>
+              {viewMode === "alliances" ? "European Alliances" : "Companies"}
+            </h3>
             <div className={styles.totalCount}>
-              {filteredAlliances.length} of {euAlliances.length} Organizations
+              {viewMode === "alliances"
+                ? `${filteredAlliances.length} of ${euAlliances.length} Organizations`
+                : `${filteredCompanies.length} of ${companiesList.length} Companies`}
             </div>
           </div>
 
@@ -279,7 +341,11 @@ export default function Aliance() {
               <FaSearch className={styles.searchIcon} />
               <input
                 type="text"
-                placeholder="Search by alliance name or company..."
+                placeholder={
+                  viewMode === "alliances"
+                    ? "Search by alliance name or company..."
+                    : "Search by company name or alliance..."
+                }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className={styles.searchInput}
@@ -297,30 +363,62 @@ export default function Aliance() {
           </div>
 
           {/* Results or Empty State */}
-          {filteredAlliances.length > 0 ? (
-            <div className={styles.alliancesList}>
-              {filteredAlliances.map((alliance, index) => (
-              <div key={index} className={styles.allianceCard}>
-                <h4 className={styles.allianceName}>{alliance.name}</h4>
-                <div className={styles.companiesList}>
-                  {alliance.companies.map((company, idx) => (
-                    <span key={idx} className={styles.companyTag}>
-                      <IoCheckmarkCircle className={styles.checkIcon} />
-                      {company}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.companyCount}>
-                  {alliance.companies.length}{" "}
-                  {alliance.companies.length === 1 ? "Company" : "Companies"}
-                </div>
+          {viewMode === "alliances" ? (
+            // Alliance View
+            filteredAlliances.length > 0 ? (
+              <div className={styles.alliancesList}>
+                {filteredAlliances.map((alliance, index) => (
+                  <div key={index} className={styles.allianceCard}>
+                    <h4 className={styles.allianceName}>{alliance.name}</h4>
+                    <div className={styles.companiesList}>
+                      {alliance.companies.map((company, idx) => (
+                        <span key={idx} className={styles.companyTag}>
+                          <IoCheckmarkCircle className={styles.checkIcon} />
+                          {company}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              <div className={styles.emptyState}>
+                <p className={styles.emptyText}>
+                  No alliances found matching "{searchTerm}"
+                </p>
+                <button
+                  className={styles.resetBtn}
+                  onClick={() => setSearchTerm("")}
+                >
+                  Clear Search
+                </button>
+              </div>
+            )
+          ) : // Company View
+          filteredCompanies.length > 0 ? (
+            <div className={styles.alliancesList}>
+              {filteredCompanies.map((company, index) => (
+                <div key={index} className={styles.allianceCard}>
+                  <h4 className={styles.allianceName}>{company.name}</h4>
+                  <div className={styles.companiesList}>
+                    {company.alliances.map((alliance, idx) => (
+                      <span key={idx} className={styles.companyTag}>
+                        <IoCheckmarkCircle className={styles.checkIcon} />
+                        {alliance}
+                      </span>
+                    ))}
+                  </div>
+                  {/* <div className={styles.companyCount}>
+                    {company.alliances.length}{" "}
+                    {company.alliances.length === 1 ? "Alliance" : "Alliances"}
+                  </div> */}
+                </div>
+              ))}
             </div>
           ) : (
             <div className={styles.emptyState}>
               <p className={styles.emptyText}>
-                No alliances found matching "{searchTerm}"
+                No companies found matching "{searchTerm}"
               </p>
               <button
                 className={styles.resetBtn}
@@ -330,6 +428,14 @@ export default function Aliance() {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Disclaimer */}
+        <div className={styles.disclaimer}>
+          <p className={styles.disclaimerText}>
+            <strong>Note:</strong> As reported by the retail companies in our
+            sample. Retailers may have other alliances.
+          </p>
         </div>
       </div>
     </section>

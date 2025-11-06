@@ -56,7 +56,8 @@
 }
 
 @keyframes gradientShift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -65,13 +66,17 @@
 }
 
 .cardHeader::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
   animation: rotate 10s linear infinite;
 }
 
@@ -150,12 +155,11 @@
 
 .downloadButton {
   padding: 0.5rem 1.5rem;
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #3ed575 100%);
   color: white;
   font-weight: 500;
   border-radius: 0.5rem;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: none;
   cursor: pointer;
@@ -168,14 +172,14 @@
 }
 
 .downloadButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(175, 143, 143, 0.381);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
 }
@@ -188,10 +192,8 @@
 .downloadButton:hover {
   background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    0 0 0 3px rgba(34, 197, 94, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
 .downloadButton:active {
@@ -236,7 +238,7 @@
 }
 
 .bulkButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -342,24 +344,23 @@
 /* 3D Effects */
 .chart3D {
   position: relative;
-  background: #ffffff;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.08),
-    0 10px 30px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: #efefee56;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 10px 30px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgb(220, 215, 215);
   border-radius: 16px;
   overflow: visible;
   transition: box-shadow 0.3s ease;
 }
 
 .chart3D::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, 
+  background: linear-gradient(
+    45deg,
     rgba(59, 130, 246, 0.3),
     rgba(139, 92, 246, 0.3),
     rgba(236, 72, 153, 0.3),
@@ -372,7 +373,8 @@
 }
 
 @keyframes borderGlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     filter: blur(15px);
   }
@@ -409,7 +411,8 @@
 
 /* Floating animation for the entire chart */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -418,15 +421,13 @@
 }
 
 .chart3D:hover {
-  box-shadow: 
-    0 25px 70px rgba(0, 0, 0, 0.1),
-    0 15px 40px rgba(0, 0, 0, 0.06),
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1), 0 15px 40px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 /* Add shimmer effect */
 .chartWrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -529,7 +530,7 @@
 }
 
 .infoCard::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -542,8 +543,7 @@
 
 .infoCard:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
@@ -570,7 +570,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -579,7 +580,7 @@
 }
 
 .iconCircle::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -4px;
   border-radius: 50%;
@@ -650,4 +651,3 @@
 .valuePurple {
   color: #9333ea;
 }
-

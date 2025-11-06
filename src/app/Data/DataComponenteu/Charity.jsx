@@ -7,6 +7,8 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 
 export default function Charity() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [viewMode, setViewMode] = useState("charities"); // "charities" or "companies"
+
   const charityData = [
     {
       name: "Alwin",
@@ -164,12 +166,40 @@ export default function Charity() {
     },
   ];
 
+  // Get unique companies and their charities
+  const getCompaniesList = () => {
+    const companiesMap = {};
+    charityData.forEach((charity) => {
+      charity.companies.forEach((company) => {
+        if (!companiesMap[company]) {
+          companiesMap[company] = [];
+        }
+        companiesMap[company].push(charity.name);
+      });
+    });
+    return Object.entries(companiesMap).map(([company, charities]) => ({
+      name: company,
+      charities: charities,
+    }));
+  };
+
+  const companiesList = getCompaniesList();
+
   // Filter charities based on search term
   const filteredCharities = charityData.filter(
     (charity) =>
       charity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       charity.companies.some((company) =>
         company.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+  );
+
+  // Filter companies based on search term
+  const filteredCompanies = companiesList.filter(
+    (company) =>
+      company.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      company.charities.some((charity) =>
+        charity.toLowerCase().includes(searchTerm.toLowerCase())
       )
   );
 
@@ -182,17 +212,49 @@ export default function Charity() {
             EU <span className={styles.highlight}>Charity Partners</span>
           </h2>
           <p className={styles.subtitle}>
-            Key Non-profit organizations and charities working with European
-            retailers to combat food waste
+            Key non-profit organisations and charities working with our sample
+            of EU retailers to combat food waste
           </p>
+        </div>
+
+        {/* View Toggle Tabs */}
+        <div className={styles.viewTabs}>
+          <button
+            className={`${styles.tab} ${
+              viewMode === "charities" ? styles.activeTab : ""
+            }`}
+            onClick={() => {
+              setViewMode("charities");
+              setSearchTerm("");
+            }}
+          >
+            <FaHeart className={styles.tabIcon} />
+            By Charity
+          </button>
+          <button
+            className={`${styles.tab} ${
+              viewMode === "companies" ? styles.activeTab : ""
+            }`}
+            onClick={() => {
+              setViewMode("companies");
+              setSearchTerm("");
+            }}
+          >
+            <FaHeart className={styles.tabIcon} />
+            By Company
+          </button>
         </div>
 
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <FaHeart className={styles.sectionIcon} />
-            <h3 className={styles.sectionTitle}>Charity Organizations</h3>
+            <h3 className={styles.sectionTitle}>
+              {viewMode === "charities" ? "Charity Organizations" : "Companies"}
+            </h3>
             <div className={styles.totalCount}>
-              {filteredCharities.length} of {charityData.length} Charities
+              {viewMode === "charities"
+                ? `${filteredCharities.length} of ${charityData.length} Charities`
+                : `${filteredCompanies.length} of ${companiesList.length} Companies`}
             </div>
           </div>
 
@@ -202,7 +264,11 @@ export default function Charity() {
               <FaSearch className={styles.searchIcon} />
               <input
                 type="text"
-                placeholder="Search by charity name or company..."
+                placeholder={
+                  viewMode === "charities"
+                    ? "Search by charity name or company..."
+                    : "Search by company name or charity..."
+                }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className={styles.searchInput}
@@ -220,30 +286,66 @@ export default function Charity() {
           </div>
 
           {/* Results or Empty State */}
-          {filteredCharities.length > 0 ? (
+          {viewMode === "charities" ? (
+            // Charity View
+            filteredCharities.length > 0 ? (
+              <div className={styles.charitiesList}>
+                {filteredCharities.map((charity, index) => (
+                  <div key={index} className={styles.charityCard}>
+                    <h4 className={styles.charityName}>{charity.name}</h4>
+                    <div className={styles.companiesList}>
+                      {charity.companies.map((company, idx) => (
+                        <span key={idx} className={styles.companyTag}>
+                          <IoCheckmarkCircle className={styles.checkIcon} />
+                          {company}
+                        </span>
+                      ))}
+                    </div>
+                    {/* <div className={styles.companyCount}>
+                      {charity.companies.length}{" "}
+                      {charity.companies.length === 1 ? "Partner" : "Partners"}
+                    </div> */}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className={styles.emptyState}>
+                <p className={styles.emptyText}>
+                  No charities found matching "{searchTerm}"
+                </p>
+                <button
+                  className={styles.resetBtn}
+                  onClick={() => setSearchTerm("")}
+                >
+                  Clear Search
+                </button>
+              </div>
+            )
+          ) : // Company View
+          filteredCompanies.length > 0 ? (
             <div className={styles.charitiesList}>
-              {filteredCharities.map((charity, index) => (
+              {filteredCompanies.map((company, index) => (
                 <div key={index} className={styles.charityCard}>
-                  <h4 className={styles.charityName}>{charity.name}</h4>
+                  <h4 className={styles.charityName}>{company.name}</h4>
                   <div className={styles.companiesList}>
-                    {charity.companies.map((company, idx) => (
+                    {company.charities.map((charity, idx) => (
                       <span key={idx} className={styles.companyTag}>
                         <IoCheckmarkCircle className={styles.checkIcon} />
-                        {company}
+                        {charity}
                       </span>
                     ))}
                   </div>
-                  <div className={styles.companyCount}>
-                    {charity.companies.length}{" "}
-                    {charity.companies.length === 1 ? "Partner" : "Partners"}
-                  </div>
+                  {/* <div className={styles.companyCount}>
+                    {company.charities.length}{" "}
+                    {company.charities.length === 1 ? "Charity" : "Charities"}
+                  </div> */}
                 </div>
               ))}
             </div>
           ) : (
             <div className={styles.emptyState}>
               <p className={styles.emptyText}>
-                No charities found matching "{searchTerm}"
+                No companies found matching "{searchTerm}"
               </p>
               <button
                 className={styles.resetBtn}
@@ -253,6 +355,13 @@ export default function Charity() {
               </button>
             </div>
           )}
+        </div>
+
+        <div className={styles.disclaimer}>
+          <p className={styles.disclaimerText}>
+            <strong>Note:</strong> As reported by the retail companies in our
+            sample. Retailers may have other charities.
+          </p>
         </div>
       </div>
     </section>

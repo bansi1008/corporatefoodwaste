@@ -1008,11 +1008,17 @@ export default function UKStates() {
     if (chartRef.current) {
       try {
         const canvas = await html2canvas(chartRef.current, {
-          backgroundColor: "#ffffff",
+          backgroundColor: "#ffffffff",
           scale: 2,
           useCORS: true,
           logging: false,
         });
+        const ctx = canvas.getContext("2d");
+
+        // ✅ Apply a tint or color overlay to the image
+        ctx.globalCompositeOperation = "source-atop";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.7)"; // dark overlay
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Download directly with high quality
         const link = document.createElement("a");

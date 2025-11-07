@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import styles from "./Hero.module.css";
 //import heroImg from "../Images/img2.png";
 import heroImg from "../Images/img4.png";
 import { IoLeafSharp } from "react-icons/io5";
 import { BiSolidLeaf } from "react-icons/bi";
 import { FaSeedling } from "react-icons/fa";
+
+// Load Three.js component only on client side
+const ThreeScene = dynamic(() => import("./ThreeScene"), { ssr: false });
 
 export default function Hero() {
   return (
@@ -22,6 +26,9 @@ export default function Hero() {
         />
         <div className={styles.overlay}></div>
       </div>
+
+      {/* Three.js 3D Scene */}
+      <ThreeScene />
 
       <div className={styles.floatingCards}>
         <div className={styles.floatingCard1}>

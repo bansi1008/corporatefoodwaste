@@ -397,7 +397,7 @@ export default function Alliances() {
         <div className={styles.disclaimer}>
           <p className={styles.disclaimerText}>
             <strong>Note:</strong> As reported by the retail companies in our
-            sample. Retailers may have other alliances.
+            sample. Retailers may have other alliances and Charity Partners.
           </p>
         </div>
       </div>

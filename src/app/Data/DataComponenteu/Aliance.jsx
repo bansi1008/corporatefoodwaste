@@ -12,6 +12,7 @@ export default function Aliance() {
   const euAlliances = [
     {
       name: "AECOC (Spanish Association of Manufacturers and Distributors)",
+      link: "https://www.aecoc.es/",
       companies: ["Mercadona"],
     },
     {
@@ -369,6 +370,18 @@ export default function Aliance() {
               <div className={styles.alliancesList}>
                 {filteredAlliances.map((alliance, index) => (
                   <div key={index} className={styles.allianceCard}>
+                    <div className={styles.alliancelink}>
+                      {alliance.link && (
+                        <a
+                          href={alliance.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.allianceLink}
+                        >
+                          Visit Alliance
+                        </a>
+                      )}
+                    </div>
                     <h4 className={styles.allianceName}>{alliance.name}</h4>
                     <div className={styles.companiesList}>
                       {alliance.companies.map((company, idx) => (
@@ -378,6 +391,7 @@ export default function Aliance() {
                         </span>
                       ))}
                     </div>
+                    <div></div>
                   </div>
                 ))}
               </div>

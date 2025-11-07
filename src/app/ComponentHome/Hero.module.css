@@ -33,7 +33,7 @@
     rgba(0, 0, 0, 0.35) 40%,
     rgba(34, 197, 94, 0.25) 100%
   );
-  z-index: 1;
+  z-index: 2;
 }
 
 .container {

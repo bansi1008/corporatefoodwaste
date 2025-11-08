@@ -9,9 +9,6 @@ import { IoLeafSharp } from "react-icons/io5";
 import { BiSolidLeaf } from "react-icons/bi";
 import { FaSeedling } from "react-icons/fa";
 
-// Load Three.js component only on client side
-const ThreeScene = dynamic(() => import("./ThreeScene"), { ssr: false });
-
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">
@@ -28,7 +25,6 @@ export default function Hero() {
       </div>
 
       {/* Three.js 3D Scene */}
-      <ThreeScene />
 
       <div className={styles.floatingCards}>
         <div className={styles.floatingCard1}>

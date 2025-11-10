@@ -34,13 +34,13 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#about" className={styles.navLink}>
+            <a href="/About" className={styles.navLink}>
               About Us
             </a>
           </li>
           <li>
-            <a href="#publication" className={styles.navLink}>
-              Publication
+            <a href="#News" className={styles.navLink}>
+              News
             </a>
           </li>
         </ul>

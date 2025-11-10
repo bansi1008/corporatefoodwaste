@@ -73,7 +73,7 @@ export default function Login() {
     setAlert({ show: false, type: "", message: "" });
 
     try {
-      const res = await axios.post("/Api/Login", form);
+      const res = await axios.post("/api/Login", form);
 
       // Show success message
       setAlert({

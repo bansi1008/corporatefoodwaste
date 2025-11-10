@@ -14,8 +14,12 @@ export async function proxy(request) {
   const { pathname } = request.nextUrl;
   console.log("MIDDLEWARE HIT:", pathname);
 
-  const protectedPaths = ["/api/admin"];
+  const protectedPaths = ["/api/admin", "api/ukdata"];
   const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
+
+  if (request.method === "GET" && pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
 
   if (isProtected) {
     // Rate limiting logic
@@ -94,5 +98,5 @@ export async function proxy(request) {
 }
 
 export const config = {
-  matcher: ["/api/admin"],
+  matcher: ["/api/admin", "/api/ukdata"],
 };

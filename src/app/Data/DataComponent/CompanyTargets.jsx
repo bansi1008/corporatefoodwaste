@@ -17,7 +17,8 @@ export default function CompanyTargets() {
     const fetchUkData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("/api/ukdata");
+        const res = await fetch("/api/ukdata");
+        if (!res.ok) throw new Error("Failed to fetch data");
         settargets(res.data);
         setError(null);
       } catch (err) {

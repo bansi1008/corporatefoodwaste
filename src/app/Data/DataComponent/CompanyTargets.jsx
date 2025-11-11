@@ -6,24 +6,31 @@ import { FaLeaf, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 import { IoTargetSharp } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 export default function CompanyTargets() {
   const [targets, settargets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchUkData = async () => {
       try {
+        setLoading(true);
         const res = await axios.get("/api/ukdata");
         settargets(res.data);
+        setError(null);
       } catch (err) {
         console.error("Error fetching data:", err);
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUkData();
   }, []);
-  targets.forEach((item) => {
-    console.log(item.Targetyear);
-  });
+
   // const target = [
   //   {
   //     company: "ALDI",
@@ -112,6 +119,56 @@ export default function CompanyTargets() {
   //     baseline: "2021/22",
   //   },
   // ];
+
+  if (loading) {
+    return (
+      <section className={styles.targets}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <span className={styles.badge}>Company Targets</span>
+            <h2 className={styles.title}>
+              UK Retailers'{" "}
+              <span className={styles.highlight}>
+                Food Waste Reduction Targets
+              </span>
+            </h2>
+            <p className={styles.subtitle}>
+              Comprehensive overview of major UK supermarkets' commitments to
+              reducing food waste
+            </p>
+          </div>
+          <Loading size="large" text="Loading company targets..." />
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={styles.targets}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <span className={styles.badge}>Company Targets</span>
+            <h2 className={styles.title}>
+              UK Retailers'{" "}
+              <span className={styles.highlight}>
+                Food Waste Reduction Targets
+              </span>
+            </h2>
+          </div>
+          <div className={styles.errorContainer}>
+            <p className={styles.errorMessage}>{error}</p>
+            <button
+              className={styles.retryButton}
+              onClick={() => window.location.reload()}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.targets}>

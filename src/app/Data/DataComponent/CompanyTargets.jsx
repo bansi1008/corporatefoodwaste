@@ -33,10 +33,10 @@ export default function CompanyTargets() {
 
       try {
         setLoading(true);
-        const res = await fetch("/api/ukdata");
+        const res = await fetch("/api/getukdata");
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
-        settargets(data); // ✅ fix here
+        settargets(data);
         setError(null);
       } catch (err) {
         console.error("Error fetching data:", err);

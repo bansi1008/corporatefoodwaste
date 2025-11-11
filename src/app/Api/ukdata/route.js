@@ -28,16 +28,3 @@ export async function POST(request) {
     );
   }
 }
-
-export async function GET() {
-  try {
-    await connectToDatabase();
-    const data = await ukdata.find({});
-    return NextResponse.json(data, { status: 200 });
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Internal Server Error" },
-      { status: 500 }
-    );
-  }
-}

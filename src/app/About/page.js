@@ -5,7 +5,7 @@ import styles from "./About.module.css";
 import Picture1 from "../Images/Picture1.jpg";
 import Picture2 from "../Images/Picture2.jpg";
 import Picture3 from "../Images/Josie.png";
-import Picture4 from "../Images/Picture4.png";
+import Picture4 from "../Images/Dina.png";
 import Picture5 from "../Images/Roza.png";
 import Picture6 from "../Images/Picture6.png";
 import Navbar from "../ComponentHome/Navbar";

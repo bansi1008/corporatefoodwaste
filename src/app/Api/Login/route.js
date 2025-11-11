@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "../../../../lib/db.js";
-import Login from "../../../../Model/login.js";
+import { connectToDatabase } from "../../../lib/db.js";
+import Login from "../../../Model/login.js";
 import bcrypt from "bcryptjs";
 import jwttoken from "jsonwebtoken";
 const { JWT_SECRET } = process.env;

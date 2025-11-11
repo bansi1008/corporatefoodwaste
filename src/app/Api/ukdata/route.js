@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "../../../../lib/db.js";
-import ukdata from "../../../../Model/ukdata.js";
+import { connectToDatabase } from "../../../lib/db.js";
+import ukdata from "../../../Model/ukdata.js";
 
 export async function POST(request) {
   const { name, Target, Targetyear, Metric, Baseline } = await request.json();

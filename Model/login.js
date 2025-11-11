@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const loginSchema = new mongoose.Schema(
   {
@@ -10,4 +10,4 @@ const loginSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.Login || mongoose.model("Login", loginSchema);
+module.exports = mongoose.models.Login || mongoose.model("Login", loginSchema);

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const ukdataSchema = new mongoose.Schema(
   {
@@ -18,4 +18,5 @@ const ukdataSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.ukdata || mongoose.model("ukdata", ukdataSchema);
+module.exports =
+  mongoose.models.ukdata || mongoose.model("ukdata", ukdataSchema);

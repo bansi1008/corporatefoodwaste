@@ -15,25 +15,11 @@ export default function CompanyTargets() {
 
   useEffect(() => {
     const fetchUkData = async () => {
-      // try {
-      //   setLoading(true);
-      //   const res = await fetch(`/api/ukdata`, {
-      //     method: "GET",
-      //   });
-      //   if (!res.ok) throw new Error("Failed to fetch data");
-      //   const data = await res.json();
-      //   settargets(data.data);
-      //   setError(null);
-      // } catch (err) {
-      //   console.error("Error fetching data:", err);
-      //   setError("Failed to load data. Please try again later.");
-      // } finally {
-      //   setLoading(false);
-      // }
-
       try {
         setLoading(true);
-        const res = await fetch("/api/getukdata");
+        const res = await fetch("/api/getukdata", {
+          method: "GET",
+        });
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
         settargets(data);

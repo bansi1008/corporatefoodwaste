@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { useState } from "react";
 import styles from "./DocumentsChart.module.css";
 import {
   BarChart,
@@ -13,58 +15,84 @@ import {
 } from "recharts";
 
 export default function DocumentsChart() {
-  const documentsData = [
-    {
-      year: "2016/17",
-      annualReport: 3,
-      sustainability: 3,
-      other: 2,
-      total: 8,
-    },
-    {
-      year: "2017/18",
-      annualReport: 4,
-      sustainability: 2,
-      other: 2,
-      total: 8,
-    },
-    {
-      year: "2018/19",
-      annualReport: 4,
-      sustainability: 2,
-      other: 2,
-      total: 8,
-    },
+  const [documentsData, setDocumentsData] = useState([]);
+  const [totalReports, setTotalReports] = useState(0);
 
-    {
-      year: "2019/20",
-      annualReport: 6,
-      sustainability: 4,
-      other: 3,
-      total: 13,
-    },
-    {
-      year: "2020/21",
-      annualReport: 4,
-      sustainability: 6,
-      other: 4,
-      total: 14,
-    },
-    {
-      year: "2021/22",
-      annualReport: 6,
-      sustainability: 5,
-      other: 5,
-      total: 16,
-    },
-    {
-      year: "2022/23",
-      annualReport: 6,
-      sustainability: 5,
-      other: 5,
-      total: 16,
-    },
-  ];
+  useEffect(() => {
+    const fetchukdocuments = async () => {
+      try {
+        const response = await fetch("/api/ukdoc", {
+          method: "GET",
+        });
+        const data = await response.json();
+        console.log("Fetched UK documents data:", data);
+        setDocumentsData(data.data);
+        setTotalReports(data.totals.totalReports);
+      } catch (error) {
+        console.error("Error fetching UK documents data:", error);
+      }
+    };
+    fetchukdocuments();
+  }, []);
+
+  // const documentsData = [
+  //   {
+  //     from: 2016,
+  //     to: 2017,
+  //     annualReport: 3,
+  //     sustainability: 3,
+  //     other: 2,
+  //     total: 8,
+  //   },
+  //   {
+  //     from: 2017,
+  //     to: 2018,
+  //     annualReport: 4,
+  //     sustainability: 2,
+  //     other: 2,
+  //     total: 8,
+  //   },
+  //   {
+  //     from: 2018,
+  //     to: 2019,
+  //     annualReport: 4,
+  //     sustainability: 2,
+  //     other: 2,
+  //     total: 8,
+  //   },
+
+  //   {
+  //     from: 2019,
+  //     to: 2020,
+  //     annualReport: 6,
+  //     sustainability: 4,
+  //     other: 3,
+  //     total: 13,
+  //   },
+  //   {
+  //     from: 2020,
+  //     to: 2021,
+  //     sustainability: 6,
+  //     other: 4,
+  //     total: 14,
+  //   },
+  //   {
+  //     from: 2021,
+  //     to: 2022,
+  //     annualReport: 6,
+  //     sustainability: 5,
+  //     other: 5,
+  //     total: 16,
+  //   },
+  //   {
+  //     from: 2022,
+  //     to: 2023,
+  //     annualReport: 6,
+  //     sustainability: 5,
+  //     other: 5,
+  //     total: 16,
+  //   },
+  // ];
 
   return (
     <section className={styles.charts}>
@@ -90,9 +118,13 @@ export default function DocumentsChart() {
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
-                  dataKey="year"
+                  dataKey="from"
                   stroke="#6b7280"
                   style={{ fontSize: "0.875rem", fontWeight: 600 }}
+                  tickFormatter={(value, index) => {
+                    const item = documentsData[index];
+                    return item ? `${item.from}-${item.to}` : value;
+                  }}
                 />
                 <YAxis stroke="#6b7280" style={{ fontSize: "0.875rem" }} />
                 <Tooltip
@@ -137,7 +169,7 @@ export default function DocumentsChart() {
 
         <div className={styles.stats}>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>75</div>
+            <div className={styles.statValue}>{totalReports}</div>
             <div className={styles.statLabel}>Total Documents</div>
           </div>
           <div className={styles.statCard}>

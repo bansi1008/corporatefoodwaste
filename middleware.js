@@ -10,11 +10,17 @@ const RATE_LIMIT = 100; // requests
 const TIME_WINDOW = 60 * 1000; // 1 minute in ms
 const ipRequestMap = new Map();
 
-export async function proxy(request) {
+export async function middleware(request) {
   const { pathname } = request.nextUrl;
-  console.log("MIDDLEWARE HIT:", pathname);
+  // console.log("MIDDLEWARE HIT:", pathname);
 
-  const protectedPaths = ["/api/admin", "api/ukdata"];
+  const protectedPaths = [
+    "/api/admin",
+    "api/ukdata",
+    "/api/editukdata/:path",
+    "/api/editukdoc/:path",
+    "/api/ukdoc",
+  ];
   const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
 
   if (request.method === "GET" && pathname.startsWith("/api/")) {
@@ -98,5 +104,11 @@ export async function proxy(request) {
 }
 
 export const config = {
-  matcher: ["/api/admin", "/api/ukdata"],
+  matcher: [
+    "/api/admin",
+    "/api/ukdata",
+    "/api/editukdata/:path",
+    "/api/editukdoc/:path",
+    "/api/ukdoc",
+  ],
 };

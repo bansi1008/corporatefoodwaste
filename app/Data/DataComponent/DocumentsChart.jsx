@@ -17,6 +17,9 @@ import {
 export default function DocumentsChart() {
   const [documentsData, setDocumentsData] = useState([]);
   const [totalReports, setTotalReports] = useState(0);
+  const [totalAnnual, setTotalAnnual] = useState(0);
+  const [totalSustainability, setTotalSustainability] = useState(0);
+  const [totalOther, setTotalOther] = useState(0);
 
   useEffect(() => {
     const fetchukdocuments = async () => {
@@ -28,6 +31,9 @@ export default function DocumentsChart() {
         console.log("Fetched UK documents data:", data);
         setDocumentsData(data.data);
         setTotalReports(data.totals.totalReports);
+        setTotalAnnual(data.totals.totalAnnual);
+        setTotalSustainability(data.totals.totalSustainability);
+        setTotalOther(data.totals.totalOther);
       } catch (error) {
         console.error("Error fetching UK documents data:", error);
       }
@@ -173,15 +179,15 @@ export default function DocumentsChart() {
             <div className={styles.statLabel}>Total Documents</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>30</div>
+            <div className={styles.statValue}>{totalAnnual}</div>
             <div className={styles.statLabel}>Annual Reports</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>24</div>
+            <div className={styles.statValue}>{totalSustainability}</div>
             <div className={styles.statLabel}>Sustainability Reports</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>21</div>
+            <div className={styles.statValue}>{totalOther}</div>
             <div className={styles.statLabel}>Other Documents</div>
           </div>
         </div>

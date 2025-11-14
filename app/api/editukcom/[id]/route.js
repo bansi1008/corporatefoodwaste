@@ -7,12 +7,11 @@ export async function PATCH(request, context) {
     await connectToDatabase();
 
     const { id } = await context.params;
-    const { company, color, data } = await request.json();
+    const { company, color } = await request.json();
 
     const updatePayload = {};
     if (company !== undefined) updatePayload.company = company;
     if (color !== undefined) updatePayload.color = color;
-    if (data !== undefined) updatePayload.data = data;
 
     if (color) {
       const existingColor = await ukcom.findOne({ color, _id: { $ne: id } });

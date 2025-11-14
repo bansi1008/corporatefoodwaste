@@ -4,72 +4,87 @@ import { useState } from "react";
 import styles from "./Alliances.module.css";
 import { FaHandshake, FaHeart, FaSearch } from "react-icons/fa";
 import { IoCheckmarkCircle } from "react-icons/io5";
+import { useEffect } from "react";
 
 export default function Alliances() {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState("alliances"); // "alliances" or "companies"
+  const [ukAlliances, setukAlliances] = useState([]);
 
-  const ukAlliances = [
-    {
-      name: "British Retail Consortium",
-      companies: [
-        "Aldi",
-        "Asda",
-        "Co-op",
-        "Iceland",
-        "Lidl",
-        "M&S",
-        "Morrisons",
-        "Sainsbury",
-        "Tesco",
-        "Waitrose",
-      ],
-    },
-    {
-      name: "Champions 12.3",
-      companies: ["Tesco"],
-    },
-    {
-      name: "Consumer Goods Forum",
-      companies: ["Tesco", "Sainsbury"],
-    },
-    {
-      name: "COP26",
-      companies: ["Tesco", "Sainsbury", "M&S", "Co-op"],
-    },
-    {
-      name: "Courtauld",
-      companies: [
-        "Aldi",
-        "Asda",
-        "Co-op",
-        "Lidl",
-        "M&S",
-        "Morrisons",
-        "Sainsbury",
-        "Tesco",
-        "Waitrose",
-      ],
-    },
-    {
-      name: "WRAP",
-      companies: [
-        "Aldi",
-        "Asda",
-        "Co-op",
-        "Lidl",
-        "M&S",
-        "Morrisons",
-        "Sainsbury",
-        "Tesco",
-        "Waitrose",
-      ],
-    },
-    {
-      name: "Too Good to Go",
-      companies: ["Aldi", "Co-op", "Morrisons", "Sainsbury", "Waitrose"],
-    },
-  ];
+  useEffect(() => {
+    const fetchAlliances = async () => {
+      try {
+        const response = await fetch("/api/ukalliances");
+        const result = await response.json();
+        setukAlliances(result.data);
+      } catch (error) {
+        console.error("Error fetching alliances:", error);
+      }
+    };
+    fetchAlliances();
+  }, []);
+
+  // const ukAlliances = [
+  //   {
+  //     name: "British Retail Consortium",
+  //     companies: [
+  //       "Aldi",
+  //       "Asda",
+  //       "Co-op",
+  //       "Iceland",
+  //       "Lidl",
+  //       "M&S",
+  //       "Morrisons",
+  //       "Sainsbury",
+  //       "Tesco",
+  //       "Waitrose",
+  //     ],
+  //   },
+  //   {
+  //     name: "Champions 12.3",
+  //     companies: ["Tesco"],
+  //   },
+  //   {
+  //     name: "Consumer Goods Forum",
+  //     companies: ["Tesco", "Sainsbury"],
+  //   },
+  //   {
+  //     name: "COP26",
+  //     companies: ["Tesco", "Sainsbury", "M&S", "Co-op"],
+  //   },
+  //   {
+  //     name: "Courtauld",
+  //     companies: [
+  //       "Aldi",
+  //       "Asda",
+  //       "Co-op",
+  //       "Lidl",
+  //       "M&S",
+  //       "Morrisons",
+  //       "Sainsbury",
+  //       "Tesco",
+  //       "Waitrose",
+  //     ],
+  //   },
+  //   {
+  //     name: "WRAP",
+  //     companies: [
+  //       "Aldi",
+  //       "Asda",
+  //       "Co-op",
+  //       "Lidl",
+  //       "M&S",
+  //       "Morrisons",
+  //       "Sainsbury",
+  //       "Tesco",
+  //       "Waitrose",
+  //     ],
+  //   },
+  //   {
+  //     name: "Too Good to Go",
+  //     companies: ["Aldi", "Co-op", "Morrisons", "Sainsbury", "Waitrose"],
+  //   },
+  // ];
 
   const charities = [
     {

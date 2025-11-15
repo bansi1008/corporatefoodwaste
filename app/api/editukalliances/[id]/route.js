@@ -4,7 +4,7 @@ import ukalliances from "../../../../Model/ukAlliances.js";
 
 export async function PATCH(request, context) {
   const { id } = await context.params;
-  const { action, company } = await request.json();
+  const { action, company, Url } = await request.json();
   if (!id) {
     return NextResponse.json(
       { message: "Alliance ID is required." },
@@ -59,6 +59,19 @@ export async function PATCH(request, context) {
 
       return NextResponse.json(
         { message: "Alliance deleted successfully." },
+        { status: 200 }
+      );
+    } else if (action === "update-url") {
+      if (Url === undefined) {
+        return NextResponse.json(
+          { message: "URL is required." },
+          { status: 400 }
+        );
+      }
+      alliance.Url = Url;
+      await alliance.save();
+      return NextResponse.json(
+        { message: "URL updated successfully." },
         { status: 200 }
       );
     } else {

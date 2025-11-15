@@ -4,7 +4,7 @@ import { connectToDatabase } from "../../../lib/db.js";
 import ukalliances from "../../../Model/ukAlliances.js";
 
 export async function POST(request) {
-  const { name, companies } = await request.json();
+  const { name, companies, Url } = await request.json();
   if (!name || !companies) {
     return NextResponse.json(
       { message: "Name and companies are required fields." },
@@ -23,6 +23,7 @@ export async function POST(request) {
     const newAlliance = new ukalliances({
       name,
       companies,
+      Url,
     });
     await newAlliance.save();
     return NextResponse.json(

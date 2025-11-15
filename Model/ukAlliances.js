@@ -7,6 +7,10 @@ const ukAlliancesSchema = new mongoose.Schema(
       required: true,
     },
     companies: [String],
+    Url: {
+      type: String,
+      required: false,
+    },
   },
   {
     collection: "ukalliances",

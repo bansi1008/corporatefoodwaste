@@ -20,7 +20,7 @@ export default function CompanyTargets() {
         const res = await fetch("/api/getukdata", {
           method: "GET",
         });
-        if (!res.ok) throw new Error("Failed to fetch data");
+        // if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
         settargets(data);
         setError(null);

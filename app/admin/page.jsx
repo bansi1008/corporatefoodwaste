@@ -3,6 +3,8 @@ import { useState } from "react";
 import UKDataForm from "./UKcomponent/UKDataForm";
 import UKDocumentsForm from "./UKcomponent/UKDocumentsForm";
 import UKSupermarketForm from "./UKcomponent/UKSupermarketForm";
+import UKAlliancesForm from "./UKcomponent/UKAlliancesForm";
+import UKCharitiesForm from "./UKcomponent/UKCharitiesForm";
 import styles from "./admin.module.css";
 
 export default function Admin() {
@@ -13,7 +15,8 @@ export default function Admin() {
     "Company Targets",
     "Documents",
     "Supermarket Food Waste",
-    "Alliances & Charities",
+    "Alliances",
+    "Charities",
   ];
 
   const resetSelection = () => {
@@ -30,6 +33,12 @@ export default function Admin() {
     }
     if (country === "UK" && dataType === "Supermarket Food Waste") {
       return <UKSupermarketForm />;
+    }
+    if (country === "UK" && dataType === "Alliances") {
+      return <UKAlliancesForm />;
+    }
+    if (country === "UK" && dataType === "Charities") {
+      return <UKCharitiesForm />;
     }
     // Add other data type forms here
     return (

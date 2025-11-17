@@ -39,8 +39,8 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#News" className={styles.navLink}>
-              News
+            <a href="/contactus" className={styles.navLink}>
+              Contact us
             </a>
           </li>
         </ul>

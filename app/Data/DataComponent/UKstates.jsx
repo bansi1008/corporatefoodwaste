@@ -986,11 +986,14 @@ export default function UKStates() {
 
   // All available metrics
   const metrics = [
-    { value: "foodHandled", label: "Food Handled" },
-    { value: "unsoldFood", label: "Unsold Food" },
+    { value: "foodHandled", label: "Food Handled (in Tonnes)" },
+    { value: "unsoldFood", label: "Unsold Food (in Tonnes)" },
     { value: "foodSurplus", label: "Food Surplus" },
     { value: "foodWaste", label: "Food Waste" },
-    { value: "foodWastePerHandled", label: "Food Waste Per Handled" },
+    {
+      value: "foodWastePerHandled",
+      label: "Food Waste Per Handled (in Tonnes)",
+    },
     { value: "unsoldFoodPerHandled", label: "Unsold Food Per Handled" },
     { value: "foodWasteToAnimalFeed", label: "Food Waste To Animal Feed" },
     { value: "humanRedistribution", label: "Human Redistribution" },

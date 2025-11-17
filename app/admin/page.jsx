@@ -5,6 +5,7 @@ import UKDocumentsForm from "./UKcomponent/UKDocumentsForm";
 import UKSupermarketForm from "./UKcomponent/UKSupermarketForm";
 import UKAlliancesForm from "./UKcomponent/UKAlliancesForm";
 import UKCharitiesForm from "./UKcomponent/UKCharitiesForm";
+import ContactSubmissions from "./UKcomponent/ContactSubmissions";
 import styles from "./admin.module.css";
 
 export default function Admin() {
@@ -39,6 +40,9 @@ export default function Admin() {
     }
     if (country === "UK" && dataType === "Charities") {
       return <UKCharitiesForm />;
+    }
+    if (country === "Contact Submissions") {
+      return <ContactSubmissions />;
     }
     // Add other data type forms here
     return (
@@ -77,7 +81,24 @@ export default function Admin() {
               <span className={styles.buttonIcon}>🇪🇺</span>
               <span className={styles.buttonText}>EU Data</span>
             </button>
+            <button
+              className={styles.contactButton}
+              onClick={() => setCountry("Contact Submissions")}
+            >
+              <span className={styles.buttonIcon}>📧</span>
+              <span className={styles.buttonText}>Contact Submissions</span>
+            </button>
           </div>
+        </div>
+      ) : country === "Contact Submissions" ? (
+        <div className={styles.formSection}>
+          <div className={styles.breadcrumb}>
+            <button onClick={resetSelection} className={styles.backButton}>
+              ← Back to Country Selection
+            </button>
+            <span className={styles.currentSelection}>Contact Submissions Data</span>
+          </div>
+          <ContactSubmissions />
         </div>
       ) : !dataType ? (
         <div className={styles.selectionSection}>

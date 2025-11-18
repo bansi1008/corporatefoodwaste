@@ -154,8 +154,8 @@ export default function EuCompanyData() {
             Targets
           </h2>
           <p className={styles.subtitle}>
-            Comprehensive overview of major European retailers' sustainability
-            commitments and environmental targets
+            Comprehensive overview of major European Food retailers'
+            sustainability commitments and environmental targets
           </p>
         </div>
 

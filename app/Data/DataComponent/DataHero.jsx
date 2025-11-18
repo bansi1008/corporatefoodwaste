@@ -3,8 +3,15 @@
 import styles from "./DataHero.module.css";
 import { FaDatabase, FaChartBar, FaFileAlt } from "react-icons/fa";
 import { IoStatsChart } from "react-icons/io5";
+import { useYearRangeStore } from "../../store/yearRangeStore.js";
+import { useEffect } from "react";
 
 export default function DataHero() {
+  const { minFrom, maxTo, fetchYearRange } = useYearRangeStore();
+  useEffect(() => {
+    fetchYearRange();
+  }, [fetchYearRange]);
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -16,8 +23,9 @@ export default function DataHero() {
           </h1>
           <p className={styles.description}>
             Comprehensive visualization of food waste reduction targets,
-            donations, and corporate commitments across major UK retailers from
-            2016 to 2023.
+            donations, and corporate commitments across major UK retailers from{" "}
+            {}
+            {minFrom} to {maxTo}.
           </p>
 
           <div className={styles.statsGrid}>
@@ -27,7 +35,7 @@ export default function DataHero() {
               </div>
               <div className={styles.statInfo}>
                 <div className={styles.statValue}>11</div>
-                <div className={styles.statLabel}>Retailers Tracked</div>
+                <div className={styles.statLabel}>Food Retailers Tracked</div>
               </div>
             </div>
 

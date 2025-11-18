@@ -15,15 +15,14 @@ export default function Features() {
     {
       icon: <FaChartLine />,
       title: "Real-Time Tracking",
-      description:
-        "Monitor food waste metrics in real-time with intuitive dashboards and comprehensive analytics.",
+      description: "monitor publicly reported food waste metrics",
       color: "#22c55e",
     },
     {
       icon: <FaLeaf />,
       title: "Sustainability Goals",
       description:
-        "Set and track reduction targets aligned with UN SDG 12.3 and global sustainability initiatives.",
+        "Set and track reduction targets aligned with UN SDG 12.3 and global sustainability initiatives by food retailers.",
       color: "#16a34a",
     },
     {

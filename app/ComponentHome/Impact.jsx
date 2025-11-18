@@ -10,21 +10,21 @@ export default function Impact() {
     {
       icon: <GiEarthAfricaEurope />,
       value: "2.5M",
-      label: "Tons CO₂ Saved",
-      description: "Environmental impact reduced through waste prevention",
+      label: "Food handled",
+      description: "Total Food handled  across UK and EU food retailers",
       color: "#22c55e",
     },
     {
       icon: <FaRecycle />,
       value: "85%",
-      label: "Recycling Rate",
-      description: "Average waste diversion from landfills",
+      label: "Unsold food",
+      description: "Total unsold food across UK and EU food retailers",
       color: "#3b82f6",
     },
     {
       icon: <FaHandHoldingHeart />,
       value: "500K",
-      label: "Meals Donated",
+      label: "Human redistribution",
       description: "Food redirected to communities in need",
       color: "#f59e0b",
     },
@@ -39,8 +39,8 @@ export default function Impact() {
             Making a <span className={styles.highlight}>Real Difference</span>
           </h2>
           <p className={styles.subtitle}>
-            Together with our partners, we're creating measurable change in the
-            fight against food waste
+            The companies tracked are reporting measurable progress in the fight
+            against food waste
           </p>
         </div>
 

@@ -35,7 +35,7 @@ export default function DataTabs({ onTabChange }) {
             </div>
             <div className={styles.tabContent}>
               <span className={styles.tabLabel}>United Kingdom</span>
-              <span className={styles.tabSubtext}>UK Retailers Data</span>
+              <span className={styles.tabSubtext}>UK food retailers’ data</span>
             </div>
             {activeTab === "UK" && (
               <div className={styles.activeIndicator}></div>
@@ -53,7 +53,7 @@ export default function DataTabs({ onTabChange }) {
             </div>
             <div className={styles.tabContent}>
               <span className={styles.tabLabel}>European Union</span>
-              <span className={styles.tabSubtext}>EU Countries Data</span>
+              <span className={styles.tabSubtext}>EU food retailers’ data</span>
             </div>
             {activeTab === "EU" && (
               <div className={styles.activeIndicator}></div>

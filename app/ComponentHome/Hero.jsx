@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import styles from "./Hero.module.css";
 //import heroImg from "../Images/img2.png";
@@ -59,10 +60,12 @@ export default function Hero() {
           </p>
 
           <div className={styles.heroButtons}>
-            <button className={styles.btnPrimary}>
-              Explore Data
-              <span className={styles.arrow}>→</span>
-            </button>
+            <Link href="/Data">
+              <button className={styles.btnPrimary}>
+                Explore Data
+                <span className={styles.arrow}>→</span>
+              </button>
+            </Link>
           </div>
 
           <div className={styles.heroStats}>

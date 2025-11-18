@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "./About.module.css";
 import Picture1 from "../Images/Picture1.jpg";
-import Picture2 from "../Images/Picture2.jpg";
+import Picture2 from "../Images/photo.png";
 import Picture3 from "../Images/Josie.png";
 import Picture4 from "../Images/Dina.png";
 import Picture5 from "../Images/Roza.png";
@@ -33,7 +33,7 @@ export default function AboutPage() {
     {
       name: "Dr Yutong (Raina) Wu",
       bio: "Her research interests are in operational research for transport and logistics systems, the application of Behaviour Finance models, Green Finance, and sustainability and accountability in the food sector.",
-      university: "University of Kent",
+      university: "",
       image: Picture2,
     },
     {
@@ -121,9 +121,12 @@ export default function AboutPage() {
 
                 <div className={styles.cardContent}>
                   <h3 className={styles.memberName}>{member.name}</h3>
-                  <span className={styles.memberUniversity}>
-                    {member.university}
-                  </span>
+                  if(member.university!= " ")
+                  {
+                    <span className={styles.memberUniversity}>
+                      {member.university}
+                    </span>
+                  }
                   <div className={styles.divider}></div>
                   <p className={styles.memberBio}>{member.bio}</p>
                 </div>

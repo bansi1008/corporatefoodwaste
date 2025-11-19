@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { useState } from "react";
 import styles from "./DocumentEU.module.css";
 import {
   BarChart,
@@ -13,64 +15,33 @@ import {
 } from "recharts";
 
 export default function DocumentEU() {
-  const documentsData = [
-    {
-      year: "2016/17",
-      annualReport: 5,
-      sustainability: 1,
-      integratedReport: 1,
-      other: 2,
-      total: 9,
-    },
-    {
-      year: "2017/18",
-      annualReport: 3,
-      sustainability: 5,
-      integratedReport: 2,
-      other: 3,
-      total: 13,
-    },
-    {
-      year: "2018/19",
-      annualReport: 4,
-      sustainability: 3,
-      integratedReport: 2,
-      other: 4,
-      total: 13,
-    },
-    {
-      year: "2019/20",
-      annualReport: 4,
-      sustainability: 6,
-      integratedReport: 2,
-      other: 6,
-      total: 18,
-    },
-    {
-      year: "2020/21",
-      annualReport: 4,
-      sustainability: 7,
-      integratedReport: 2,
-      other: 1,
-      total: 14,
-    },
-    {
-      year: "2021/22",
-      annualReport: 4,
-      sustainability: 5,
-      integratedReport: 2,
-      other: 5,
-      total: 16,
-    },
-    {
-      year: "2022/23",
-      annualReport: 4,
-      sustainability: 4,
-      integratedReport: 2,
-      other: 3,
-      total: 13,
-    },
-  ];
+  const [documentsData, setDocumentsData] = useState([]);
+  const [totalReports, setTotalReports] = useState(0);
+  const [totalAnnual, setTotalAnnual] = useState(0);
+  const [totalSustainability, setTotalSustainability] = useState(0);
+  const [totalIntegrated, setTotalIntegrated] = useState(0);
+  const [totalOther, setTotalOther] = useState(0);
+
+  useEffect(() => {
+    const fetcheudocuments = async () => {
+      try {
+        const response = await fetch("/api/EU/eudoc", {
+          method: "GET",
+        });
+        const data = await response.json();
+        console.log("Fetched EU documents data:", data);
+        setDocumentsData(data.data);
+        setTotalReports(data.totals.totalReports);
+        setTotalAnnual(data.totals.totalAnnual);
+        setTotalSustainability(data.totals.totalSustainability);
+        setTotalIntegrated(data.totals.totalIntegrated);
+        setTotalOther(data.totals.totalOther);
+      } catch (error) {
+        console.error("Error fetching EU documents data:", error);
+      }
+    };
+    fetcheudocuments();
+  }, []);
 
   return (
     <section className={styles.charts}>
@@ -97,9 +68,15 @@ export default function DocumentEU() {
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
-                  dataKey="year"
+                  dataKey="from"
                   stroke="#6b7280"
                   style={{ fontSize: "0.875rem", fontWeight: 600 }}
+                  tickFormatter={(value, index) => {
+                    const item = documentsData[index];
+                    return item
+                      ? `${item.from}/${item.to.toString().slice(-2)}`
+                      : value;
+                  }}
                 />
                 <YAxis stroke="#6b7280" style={{ fontSize: "0.875rem" }} />
                 <Tooltip
@@ -151,23 +128,23 @@ export default function DocumentEU() {
 
         <div className={styles.stats}>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>96</div>
+            <div className={styles.statValue}>{totalReports}</div>
             <div className={styles.statLabel}>Total Documents</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>28</div>
+            <div className={styles.statValue}>{totalAnnual}</div>
             <div className={styles.statLabel}>Annual Reports</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>31</div>
+            <div className={styles.statValue}>{totalSustainability}</div>
             <div className={styles.statLabel}>Sustainability Reports</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>13</div>
+            <div className={styles.statValue}>{totalIntegrated}</div>
             <div className={styles.statLabel}>Integrated Reports</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statValue}>24</div>
+            <div className={styles.statValue}>{totalOther}</div>
             <div className={styles.statLabel}>Other Documents</div>
           </div>
         </div>

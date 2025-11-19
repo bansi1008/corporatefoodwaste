@@ -39,16 +39,25 @@ export default function UKStates() {
   const metrics = [
     { value: "foodHandled", label: "Food Handled (in Tonnes)" },
     { value: "unsoldFood", label: "Unsold Food (in Tonnes)" },
-    { value: "foodSurplus", label: "Food Surplus" },
-    { value: "foodWaste", label: "Food Waste" },
+    { value: "foodSurplus", label: "Food Surplus (in Tonnes)" },
+    { value: "foodWaste", label: "Food Waste (in Tonnes)" },
     {
       value: "foodWastePerHandled",
-      label: "Food Waste Per Handled (in Tonnes)",
+      label: "Food Waste Per Handled (in %)",
     },
-    { value: "unsoldFoodPerHandled", label: "Unsold Food Per Handled" },
-    { value: "foodWasteToAnimalFeed", label: "Food Waste To Animal Feed" },
-    { value: "humanRedistribution", label: "Human Redistribution" },
-    { value: "foodWasteReductionRate", label: "Food Waste Reduction Rate" },
+    {
+      value: "unsoldFoodPerHandled",
+      label: "Unsold Food to Food Handled (in %).",
+    },
+    {
+      value: "foodWasteToAnimalFeed",
+      label: "Food Waste To Animal Feed (in Tonnes)",
+    },
+    { value: "humanRedistribution", label: "Human Redistribution (in Tonnes)" },
+    {
+      value: "foodWasteReductionRate",
+      label: "Food Waste Reduction Rate (in %)",
+    },
   ];
 
   useEffect(() => {

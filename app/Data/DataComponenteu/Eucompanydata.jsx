@@ -17,8 +17,9 @@ export default function EuCompanyData() {
       TargetMetric: [
         "Number of stores donating food - number of stores donating as a proportion of the total number of stores (in %)",
       ],
-      Standardised: "Number of stores donating food",
-      Baseline: "Not mentioned",
+      Standardised: ["Number of stores donating food", "hidvkdovodm dovdovj "],
+      fromBaseline: null,
+      toBaseline: null,
     },
     {
       companyName: "Aldi Sud (South)",
@@ -32,16 +33,18 @@ export default function EuCompanyData() {
       TargetMetric: [
         "FW intensity as a % of all food handled (the percentage of food handled that ends up as waste (tonnes of food waste/tonnes of food product  sold + tonnes of food waste + tonnes of food redistributed)FW: food surplus per total food sold",
       ],
-      Standardised: "Food Waste/Food Handled",
-      Baseline: "2017/2018",
+      Standardised: ["Food Waste/Food Handled"],
+      fromBaseline: 2017,
+      toBaseline: 2018,
     },
     {
       companyName: "Carrefour",
       Commitment: ["50% reduction in retail FW by 2025 "],
       targetDate: [2025],
       TargetMetric: ["FW in kg per sq.m "],
-      Standardised: "Food Waste in kg per sq.m",
-      Baseline: "2016/2017",
+      Standardised: ["Food Waste in kg per sq.m"],
+      fromBaseline: 2016,
+      toBaseline: 2017,
     },
     {
       companyName: "Colruyt",
@@ -52,9 +55,11 @@ export default function EuCompanyData() {
       TargetMetric: [
         "Tonnage (or percentage) of unsold food distributed for human and animal consumption",
       ],
-      Standardised:
+      Standardised: [
         "Tonnage (or percentage) of unsold food distributed for human and animal consumption",
-      Baseline: "",
+      ],
+      fromBaseline: null,
+      toBaseline: null,
     },
     {
       companyName: "Delhaize",
@@ -65,8 +70,9 @@ export default function EuCompanyData() {
       ],
       targetDate: [2020, 2025, 2030],
       TargetMetric: ["Tonnes of FW per 1 million Euro of food sales"],
-      Standardised: "Tonnes of FW per 1 million Euro of food sales",
-      Baseline: "2016/17",
+      Standardised: ["Tonnes of FW per 1 million Euro of food sales"],
+      fromBaseline: 2016,
+      toBaseline: 2017,
     },
     {
       companyName: "DIA",
@@ -75,8 +81,9 @@ export default function EuCompanyData() {
       ],
       targetDate: [],
       TargetMetric: ["FW sent to landfill", "Food Waste/Food Handled"],
-      Standardised: "Sent to landfill",
-      Baseline: "2020/21",
+      Standardised: ["Sent to landfill", "Food Waste/Food Handled"],
+      fromBaseline: 2020,
+      toBaseline: 2021,
     },
     {
       companyName: "Kesko",
@@ -90,8 +97,9 @@ export default function EuCompanyData() {
       TargetMetric: [
         "FW/food sold (kg) from base year 2016 (2019-2021 period)",
       ],
-      Standardised: "Food Waste/Food Sold",
-      Baseline: "2016/17",
+      Standardised: ["Food Waste/Food Sold"],
+      fromBaseline: 2016,
+      toBaseline: 2017,
     },
     {
       companyName: "LIDL (Ireland)",
@@ -100,32 +108,36 @@ export default function EuCompanyData() {
       TargetMetric: [
         "Total Food Waste Donated (Lidl own metric; total volume of food waste donated from store)",
       ],
-      Standardised: "Food Waste donated",
-      Baseline: "2016/17",
+      Standardised: ["Food Waste donated"],
+      fromBaseline: 2016,
+      toBaseline: 2017,
     },
     {
       companyName: "LIDL Schwarz Group",
       Commitment: ["Reduce FW 50% by 2030"],
       targetDate: [2030],
       TargetMetric: ["Under development"],
-      Standardised: "Under Development  ",
-      Baseline: "2018/19",
+      Standardised: ["Under Development"],
+      fromBaseline: 2018,
+      toBaseline: 2019,
     },
     {
       companyName: "Mercadona",
       Commitment: ["Reduce FW below 1% by weight"],
       targetDate: [],
       TargetMetric: ["Food Waste/Food Handled"],
-      Standardised: "Food Waste/Food Handled",
-      Baseline: "N/A",
+      Standardised: ["Food Waste/Food Handled"],
+      fromBaseline: null,
+      toBaseline: null,
     },
     {
       companyName: "Les Mousquetaires",
       Commitment: ["Zero FW by 2025"],
       targetDate: [2025],
       TargetMetric: ["Food Waste"],
-      Standardised: "Food Waste",
-      Baseline: "N/A",
+      Standardised: ["Food Waste"],
+      fromBaseline: null,
+      toBaseline: null,
     },
     {
       companyName: "Norgesgruppen",
@@ -136,8 +148,9 @@ export default function EuCompanyData() {
       ],
       targetDate: [2020, 2025],
       TargetMetric: ["Change in FW (in value)/Sales"],
-      Standardised: "Change in FW (in value)/Sales",
-      Baseline: "2015/16",
+      Standardised: ["Change in FW (in value)/Sales"],
+      fromBaseline: 2015,
+      toBaseline: 2016,
     },
   ];
 
@@ -238,9 +251,23 @@ export default function EuCompanyData() {
                       )}
                     </div>
                   </td>
-                  <td className={styles.metricCell}>{company.Standardised}</td>
+                  <td className={styles.metricCell}>
+                    <ul className={styles.commitmentsList}>
+                      {company.Standardised.map((metric, idx) => (
+                        <li key={idx} className={styles.commitmentItem}>
+                          {metric}
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
                   <td className={styles.baselineCell}>
-                    <span className={styles.baseline}>{company.Baseline}</span>
+                    <span className={styles.baseline}>
+                      {company.fromBaseline && company.toBaseline
+                        ? `${company.fromBaseline}/${company.toBaseline}`
+                        : company.fromBaseline || company.toBaseline
+                        ? company.fromBaseline || company.toBaseline
+                        : "N/A"}
+                    </span>
                   </td>
                 </tr>
               ))}

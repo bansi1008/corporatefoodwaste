@@ -1,27 +1,20 @@
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "../../../../lib/db.js";
-import ukalliances from "../../../../Model/ukAlliances.js";
+import { connectToDatabase } from "../../../../../lib/db.js";
+import eualiance from "../../../../../Model/eualiance.js";
 
 export async function PATCH(request, context) {
   const { id } = await context.params;
-  const { action, company, Url } = await request.json();
-  if (!id) {
-    return NextResponse.json(
-      { message: "Alliance ID is required." },
-      { status: 400 }
-    );
-  }
+  const { action, company, link } = await request.json();
+
   try {
     await connectToDatabase();
-    const alliance = await ukalliances.findById(id);
-
+    const alliance = await eualiance.findById(id);
     if (!alliance) {
       return NextResponse.json(
         { message: "Alliance not found." },
         { status: 404 }
       );
     }
-
     if (action === "add-company") {
       if (!company) {
         return NextResponse.json(
@@ -29,12 +22,10 @@ export async function PATCH(request, context) {
           { status: 400 }
         );
       }
-
       if (!alliance.companies.includes(company)) {
         alliance.companies.push(company);
         await alliance.save();
       }
-
       return NextResponse.json(
         { message: "Company added successfully." },
         { status: 200 }
@@ -46,32 +37,29 @@ export async function PATCH(request, context) {
           { status: 400 }
         );
       }
-
       alliance.companies = alliance.companies.filter((c) => c !== company);
       await alliance.save();
-
       return NextResponse.json(
         { message: "Company removed successfully." },
         { status: 200 }
       );
     } else if (action === "delete-alliance") {
-      await ukalliances.findByIdAndDelete(id);
-
+      await eualiance.findByIdAndDelete(id);
       return NextResponse.json(
         { message: "Alliance deleted successfully." },
         { status: 200 }
       );
-    } else if (action === "update-url") {
-      if (Url === undefined) {
+    } else if (action === "update-link") {
+      if (!link) {
         return NextResponse.json(
-          { message: "URL is required." },
+          { message: "Link is required." },
           { status: 400 }
         );
       }
-      alliance.Url = Url;
+      alliance.link = link;
       await alliance.save();
       return NextResponse.json(
-        { message: "URL updated successfully." },
+        { message: "Link updated successfully." },
         { status: 200 }
       );
     } else {
@@ -89,7 +77,7 @@ export async function DELETE(request, context) {
   const { id } = await context.params;
   try {
     await connectToDatabase();
-    await ukalliances.findByIdAndDelete(id);
+    await eualiance.findByIdAndDelete(id);
     return NextResponse.json(
       { message: "Alliance deleted successfully." },
       { status: 200 }

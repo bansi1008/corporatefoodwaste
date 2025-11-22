@@ -6,6 +6,10 @@ import UKSupermarketForm from "./UKcomponent/UKSupermarketForm";
 import UKAlliancesForm from "./UKcomponent/UKAlliancesForm";
 import UKCharitiesForm from "./UKcomponent/UKCharitiesForm";
 import ContactSubmissions from "./UKcomponent/ContactSubmissions";
+import EUCompanyForm from "./EUcomponent/EUCompanyForm";
+import EUDocumentsForm from "./EUcomponent/EUDocumentsForm";
+import EUAlliancesForm from "./EUcomponent/EUAlliancesForm";
+import EUCharitiesForm from "./EUcomponent/EUCharitiesForm";
 import styles from "./admin.module.css";
 
 export default function Admin() {
@@ -40,6 +44,18 @@ export default function Admin() {
     }
     if (country === "UK" && dataType === "Charities") {
       return <UKCharitiesForm />;
+    }
+    if (country === "EU" && dataType === "Company Targets") {
+      return <EUCompanyForm />;
+    }
+    if (country === "EU" && dataType === "Documents") {
+      return <EUDocumentsForm />;
+    }
+    if (country === "EU" && dataType === "Alliances") {
+      return <EUAlliancesForm />;
+    }
+    if (country === "EU" && dataType === "Charities") {
+      return <EUCharitiesForm />;
     }
     if (country === "Contact Submissions") {
       return <ContactSubmissions />;

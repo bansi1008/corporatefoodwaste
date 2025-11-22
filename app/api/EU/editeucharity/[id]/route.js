@@ -49,12 +49,6 @@ export async function PATCH(request, context) {
         { status: 200 }
       );
     } else if (action === "update-Url") {
-      if (!Url) {
-        return NextResponse.json(
-          { message: "Url is required." },
-          { status: 400 }
-        );
-      }
       charity.Url = Url;
       await charity.save();
       return NextResponse.json(

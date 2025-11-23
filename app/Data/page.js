@@ -18,6 +18,7 @@ import EuDataHero from "./DataComponenteu/EuDataHero";
 import DocumentEU from "./DataComponenteu/DocumentEU";
 import EuAliance from "./DataComponenteu/Aliance";
 import EuCharity from "./DataComponenteu/Charity";
+import EUStates from "./DataComponenteu/EUStates";
 
 export default function Page() {
   const [activeRegion, setActiveRegion] = useState("UK");
@@ -53,6 +54,7 @@ export default function Page() {
           <EuDataHero />
           <EuCompanyData />
           <DocumentEU />
+
           <EuAliance />
           <EuCharity />
         </>

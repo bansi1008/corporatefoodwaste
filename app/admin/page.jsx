@@ -10,6 +10,7 @@ import EUCompanyForm from "./EUcomponent/EUCompanyForm";
 import EUDocumentsForm from "./EUcomponent/EUDocumentsForm";
 import EUAlliancesForm from "./EUcomponent/EUAlliancesForm";
 import EUCharitiesForm from "./EUcomponent/EUCharitiesForm";
+import EUSupermarketForm from "./EUcomponent/EUSupermarketForm";
 import styles from "./admin.module.css";
 
 export default function Admin() {
@@ -56,6 +57,9 @@ export default function Admin() {
     }
     if (country === "EU" && dataType === "Charities") {
       return <EUCharitiesForm />;
+    }
+    if (country === "EU" && dataType === "Supermarket Food Waste") {
+      return <EUSupermarketForm />;
     }
     if (country === "Contact Submissions") {
       return <ContactSubmissions />;
@@ -112,7 +116,9 @@ export default function Admin() {
             <button onClick={resetSelection} className={styles.backButton}>
               ← Back to Country Selection
             </button>
-            <span className={styles.currentSelection}>Contact Submissions Data</span>
+            <span className={styles.currentSelection}>
+              Contact Submissions Data
+            </span>
           </div>
           <ContactSubmissions />
         </div>

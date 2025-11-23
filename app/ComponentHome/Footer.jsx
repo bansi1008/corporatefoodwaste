@@ -25,36 +25,22 @@ export default function Footer() {
               Empowering companies across UK and EU to track, report, and reduce
               food waste through data-driven insights and sustainable action.
             </p>
-            <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialIcon} aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-                <FaLinkedin />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="Facebook">
-                <FaFacebook />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="Instagram">
-                <FaInstagram />
-              </a>
-            </div>
           </div>
 
           <div className={styles.footerColumn}>
             <h3 className={styles.columnTitle}>Quick Links</h3>
             <ul className={styles.linkList}>
               <li>
-                <a href="#home">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="#data">Data</a>
+                <a href="/Data">Data</a>
               </li>
               <li>
-                <a href="#about">About Us</a>
+                <a href="/About">About Us</a>
               </li>
               <li>
-                <a href="#publication">Publication</a>
+                <a href="/contactus">Contact us</a>
               </li>
             </ul>
           </div>
@@ -64,24 +50,6 @@ export default function Footer() {
             <ul className={styles.linkList}>
               <li>
                 <Link href="/Login">Admin</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.footerColumn}>
-            <h3 className={styles.columnTitle}>Contact Us</h3>
-            <ul className={styles.contactList}>
-              <li>
-                <IoMdMail className={styles.contactIcon} />
-                <span>info@wastewatch.com</span>
-              </li>
-              <li>
-                <IoMdCall className={styles.contactIcon} />
-                <span>+44 20 1234 5678</span>
-              </li>
-              <li>
-                <IoLocationSharp className={styles.contactIcon} />
-                <span>Newcastle, United Kingdom</span>
               </li>
             </ul>
           </div>
@@ -101,14 +69,6 @@ export default function Footer() {
               Bansi Dobariya
             </a>
           </p>
-
-          <div className={styles.footerLinks}>
-            <a href="#">Privacy</a>
-            <span className={styles.separator}>•</span>
-            <a href="#">Terms</a>
-            <span className={styles.separator}>•</span>
-            <a href="#">Cookies</a>
-          </div>
         </div>
       </div>
     </footer>

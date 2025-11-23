@@ -10,6 +10,7 @@ export default function Alliances() {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState("alliances"); // "alliances" or "companies"
   const [ukAlliances, setukAlliances] = useState([]);
+  const [charities, setCharities] = useState([]);
 
   useEffect(() => {
     const fetchAlliances = async () => {
@@ -24,94 +25,45 @@ export default function Alliances() {
     fetchAlliances();
   }, []);
 
-  // const ukAlliances = [
+  useEffect(() => {
+    const fetchCharities = async () => {
+      try {
+        const response = await fetch("/api/getUkcharity");
+        const result = await response.json();
+        setCharities(result.data);
+      } catch (error) {
+        console.error("Error fetching charities:", error);
+      }
+    };
+    fetchCharities();
+  }, []);
+
+  // const charities = [
   //   {
-  //     name: "British Retail Consortium",
-  //     companies: [
-  //       "Aldi",
-  //       "Asda",
-  //       "Co-op",
-  //       "Iceland",
-  //       "Lidl",
-  //       "M&S",
-  //       "Morrisons",
-  //       "Sainsbury",
-  //       "Tesco",
-  //       "Waitrose",
-  //     ],
+  //     name: "FareShare",
+  //     companies: ["Aldi", "Asda", "Co-op", "M&S", "Morrisons", "Sainsbury"],
   //   },
   //   {
-  //     name: "Champions 12.3",
-  //     companies: ["Tesco"],
+  //     name: "Hubbub",
+  //     companies: ["Asda", "Co-op", "M&S", "Morrisons", "Sainsbury", "Waitrose"],
   //   },
   //   {
-  //     name: "Consumer Goods Forum",
-  //     companies: ["Tesco", "Sainsbury"],
+  //     name: "The Trussell Trust",
+  //     companies: ["Asda", "Tesco", "Waitrose"],
   //   },
   //   {
-  //     name: "COP26",
-  //     companies: ["Tesco", "Sainsbury", "M&S", "Co-op"],
+  //     name: "OLIO",
+  //     companies: ["Asda", "Morrisons", "Tesco", "Waitrose"],
   //   },
   //   {
-  //     name: "Courtauld",
-  //     companies: [
-  //       "Aldi",
-  //       "Asda",
-  //       "Co-op",
-  //       "Lidl",
-  //       "M&S",
-  //       "Morrisons",
-  //       "Sainsbury",
-  //       "Tesco",
-  //       "Waitrose",
-  //     ],
+  //     name: "Neighbourly",
+  //     companies: ["Aldi", "Asda", "Co-op", "Waitrose"],
   //   },
   //   {
-  //     name: "WRAP",
-  //     companies: [
-  //       "Aldi",
-  //       "Asda",
-  //       "Co-op",
-  //       "Lidl",
-  //       "M&S",
-  //       "Morrisons",
-  //       "Sainsbury",
-  //       "Tesco",
-  //       "Waitrose",
-  //     ],
-  //   },
-  //   {
-  //     name: "Too Good to Go",
-  //     companies: ["Aldi", "Co-op", "Morrisons", "Sainsbury", "Waitrose"],
+  //     name: "WWF",
+  //     companies: ["Co-op", "M&S", "Sainsbury", "Tesco"],
   //   },
   // ];
-
-  const charities = [
-    {
-      name: "FareShare",
-      companies: ["Aldi", "Asda", "Co-op", "M&S", "Morrisons", "Sainsbury"],
-    },
-    {
-      name: "Hubbub",
-      companies: ["Asda", "Co-op", "M&S", "Morrisons", "Sainsbury", "Waitrose"],
-    },
-    {
-      name: "The Trussell Trust",
-      companies: ["Asda", "Tesco", "Waitrose"],
-    },
-    {
-      name: "OLIO",
-      companies: ["Asda", "Morrisons", "Tesco", "Waitrose"],
-    },
-    {
-      name: "Neighbourly",
-      companies: ["Aldi", "Asda", "Co-op", "Waitrose"],
-    },
-    {
-      name: "WWF",
-      companies: ["Co-op", "M&S", "Sainsbury", "Tesco"],
-    },
-  ];
 
   // Get unique companies and their alliances
   const getCompaniesFromAlliances = () => {

@@ -1,29 +1,40 @@
 "use client";
 
 import styles from "./Impact.module.css";
+import { useImpact } from "../store/impact.js";
+import { useEffect } from "react";
 import { GiEarthAfricaEurope } from "react-icons/gi";
 import { FaRecycle, FaHandHoldingHeart } from "react-icons/fa";
 import { IoStatsChart } from "react-icons/io5";
 
 export default function Impact() {
+  const {
+    totalFoodHandledInBillions,
+    totalUnsoldFoodInBillions,
+    totalHumanRedistributionInBillions,
+    fetchTotalimpact,
+  } = useImpact();
+  useEffect(() => {
+    fetchTotalimpact();
+  }, [fetchTotalimpact]);
   const impacts = [
     {
       icon: <GiEarthAfricaEurope />,
-      value: "2.5M",
+      value: totalFoodHandledInBillions + "" + "B",
       label: "Food handled",
       description: "Total Food handled  across UK and EU food retailers",
       color: "#22c55e",
     },
     {
       icon: <FaRecycle />,
-      value: "85%",
+      value: totalUnsoldFoodInBillions + "M",
       label: "Unsold food",
       description: "Total unsold food across UK and EU food retailers",
       color: "#3b82f6",
     },
     {
       icon: <FaHandHoldingHeart />,
-      value: "500K",
+      value: totalHumanRedistributionInBillions + "M",
       label: "Human redistribution",
       description: "Food redirected to communities in need",
       color: "#f59e0b",

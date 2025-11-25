@@ -7,7 +7,7 @@ export async function PATCH(request, context) {
   const { action, company, Url } = await request.json();
   if (!id) {
     return NextResponse.json(
-      { message: "Alliance ID is required." },
+      { message: "Charity ID is required." },
       { status: 400 }
     );
   }
@@ -17,7 +17,7 @@ export async function PATCH(request, context) {
 
     if (!alliance) {
       return NextResponse.json(
-        { message: "Alliance not found." },
+        { message: "Charity not found." },
         { status: 404 }
       );
     }
@@ -58,7 +58,7 @@ export async function PATCH(request, context) {
       await ukcharity.findByIdAndDelete(id);
 
       return NextResponse.json(
-        { message: "Alliance deleted successfully." },
+        { message: "Charity deleted successfully." },
         { status: 200 }
       );
     } else if (action === "update-url") {

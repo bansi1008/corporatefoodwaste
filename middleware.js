@@ -16,10 +16,19 @@ export async function middleware(request) {
 
   const protectedPaths = [
     "/api/admin",
-    "api/ukdata",
+    "/api/ukdata",
     "/api/editukdata/:path",
     "/api/editukdoc/:path",
     "/api/ukdoc",
+    "/api/ukcom",
+    "/api/editukcom/:path",
+    "/api/editukcom/:path/add-year",
+    "/api/editukcom/:path*",
+    "/api/ukalliances",
+    "/api/editukalliances/:path",
+    "/api/getUkcharity",
+    "/api/ukcharity/:path",
+    "/api/EU/:path*",
   ];
   const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
 
@@ -55,10 +64,6 @@ export async function middleware(request) {
     recent.push(now);
     ipRequestMap.set(ip, recent);
   }
-
-  // if (request.method === "GET" && pathname.startsWith("/api/")) {
-  //   return NextResponse.next();
-  // }
 
   const token = request.cookies.get("wastetoken")?.value;
 
@@ -110,5 +115,14 @@ export const config = {
     "/api/editukdata/:path",
     "/api/editukdoc/:path",
     "/api/ukdoc",
+    "/api/ukcom",
+    "/api/editukcom/:path",
+    "/api/editukcom/:path/delete-year",
+    "/api/editukcom/:path*",
+    "/api/ukalliances",
+    "/api/editukalliances/:path",
+    "/api/getUkcharity",
+    "/api/ukcharity/:path",
+    "/api/EU/:path*",
   ],
 };

@@ -29,6 +29,7 @@ export async function middleware(request) {
     "/api/getUkcharity",
     "/api/ukcharity/:path",
     "/api/EU/:path*",
+    "/api/editEU/:path*",
   ];
   const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
 
@@ -124,5 +125,6 @@ export const config = {
     "/api/getUkcharity",
     "/api/ukcharity/:path",
     "/api/EU/:path*",
+    "/api/editEU/:path*",
   ],
 };

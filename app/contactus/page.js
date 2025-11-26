@@ -120,7 +120,7 @@ export default function ContactUsPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="John Doe"
+                      placeholder="Bansi Dobariya"
                       className={styles.input}
                     />
                   </div>
@@ -151,7 +151,7 @@ export default function ContactUsPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="john@example.com"
+                      placeholder="Bansi@example.com"
                       className={styles.input}
                     />
                   </div>

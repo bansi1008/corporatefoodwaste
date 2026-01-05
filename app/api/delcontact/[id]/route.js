@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { connectToDatabase } from "../../../../lib/db.js";
 import contactus from "../../../../Model/contact.js";
 
-export async function DELETE(request) {
+export async function DELETE(request, context) {
   const { id } = await context.params;
   try {
     await connectToDatabase();

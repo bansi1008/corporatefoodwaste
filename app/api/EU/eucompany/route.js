@@ -47,7 +47,8 @@ export async function POST(request) {
 export async function GET() {
   try {
     await connectToDatabase();
-    const companies = await eucompany.find();
+    const companies = await eucompany.find().sort({ companyName: 1 });
+
     return NextResponse.json(
       { message: "Companies fetched successfully.", data: companies },
       { status: 200 }

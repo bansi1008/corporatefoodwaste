@@ -47,7 +47,12 @@ export async function POST(request) {
 export async function GET() {
   try {
     await connectToDatabase();
+    //   const data = await ukcom
+    //     .find({})
+    //     .collation({ locale: "en", strength: 1 })
+    //     .sort({ name: 1 });
     const data = await ukcom.find({});
+    // const filteredData = data.map(({ company, , data }) => ({ company, color, data }));
     return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
     return NextResponse.json(

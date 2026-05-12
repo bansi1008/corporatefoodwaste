@@ -9,7 +9,7 @@ export async function DELETE(request, context) {
     const deletedContact = await contactus.findByIdAndDelete(id);
     if (!deletedContact) {
       return NextResponse.json(
-        { message: "Contact not found." },
+        { message: "Contact not found sorry." },
         { status: 404 }
       );
     }
